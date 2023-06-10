@@ -22,6 +22,10 @@ window/size/viewport_height=960
 window/size/mode=2
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file=".recording.avi"
+
 [physics]
 
 common/physics_ticks_per_second=240
