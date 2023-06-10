@@ -3,11 +3,11 @@ extends Area2D
 
 signal finished()
 signal died()
-signal coin_collected(coin: Coin)
+signal key_collected(key: KeyCollectible)
 
 @export var camera: Camera2D
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite := $Sprite2D as Sprite2D
 @onready var safe_zone := $SafeZone as SafeZone
 
 var viewport: Rect2
@@ -21,7 +21,7 @@ func trigger_safezone() -> void:
 
 func get_camera_rect() -> Rect2:
 	var origin := camera.get_screen_center_position()
-	var size = camera.get_viewport_rect().size / camera.zoom
+	var size := camera.get_viewport_rect().size / camera.zoom
 	return Rect2(Vector2(origin - size / 2.0), size)
 
 func update_sprite(relative: Vector2) -> void:
@@ -32,7 +32,7 @@ func update_sprite(relative: Vector2) -> void:
 	sprite.scale.x = scale_factor
 	sprite.scale.y = 1 / scale_factor
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	var mouse_event := event as InputEventMouseMotion
 	var factor := camera.zoom.x
 	if mouse_event:
@@ -44,11 +44,12 @@ func _input(event):
 		)
 		update_sprite(mouse_event.relative)
 
-func _on_area_entered(area):
+func _on_area_entered(area: Area2D):
 	if area is Enemy or area is Bullet:
 		emit_signal("died")
-	if area is Coin:
-		var coin = area as Coin
-		emit_signal("coin_collected", coin)
+	if area is KeyCollectible:
+		var key = area as KeyCollectible
+		emit_signal("key_collected", key)
+		key.collect()
 	if area is NextLevel:
 		emit_signal("finished")

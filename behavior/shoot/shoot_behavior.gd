@@ -2,7 +2,7 @@ class_name ShootBehavior
 extends Behavior
 
 var Bullet := preload("res://bullet/bullet.tscn")
-@onready var root := $"/root/Level/Enemies"
+@onready var root := $"/root/Level/Objects"
 
 func shoot(direction: float, speed: float) -> void:
 	var bullet := Bullet.instantiate() as Bullet

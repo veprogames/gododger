@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c11qqxbj740as" path="res://nextlevel/next_level.tscn" id="5_kkr4l"]
 [ext_resource type="PackedScene" uid="uid://bu1132gssq8ij" path="res://ui/ui.tscn" id="6_1rctm"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("spawner", "enemy_container")]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_v1ekr")
-spawner = NodePath("EnemySpawner")
-enemy_container = NodePath("Enemies")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_5ibnl")]
 position = Vector2(-139, -71)
@@ -37,16 +35,16 @@ grow_vertical = 2
 color = Color(0.2, 0.203922, 0.286275, 1)
 metadata/_edit_lock_ = true
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Objects" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
 [node name="UI" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6_1rctm")]
 level = NodePath("..")
 
-[node name="Coins" type="Node2D" parent="."]
+[node name="Keys" type="Node2D" parent="."]
 
-[connection signal="coin_collected" from="Player" to="." method="_on_player_coin_collected"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="finished" from="Player" to="." method="_on_player_finished"]
-[connection signal="coin_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_coin_spawned"]
+[connection signal="key_collected" from="Player" to="." method="_on_player_key_collected"]
+[connection signal="key_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_key_spawned"]
 [connection signal="node_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_node_spawned"]

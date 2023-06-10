@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c33ovejgt1i1f" path="res://nextlevel/finish.png" id="1_su52f"]
 [ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="3_o1nro"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0iunv"]
-radius = 16.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_golky"]
 size = Vector2(8, 8)
 
@@ -29,10 +26,12 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 1.0
 color_ramp = SubResource("GradientTexture1D_2hrin")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0iunv"]
+radius = 16.0
+
 [node name="NextLevel" type="Area2D"]
 z_index = 1
 script = ExtResource("1_huoms")
-safe_area = SubResource("CircleShape2D_0iunv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

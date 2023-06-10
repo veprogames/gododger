@@ -15,7 +15,7 @@ func get_amplitude() -> Vector2:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	var t = elapsed * TAU / 2.0 * get_bpm_rate()
+	var t := elapsed * TAU / 2.0 * get_bpm_rate()
 	enemy.position += delta * get_speed_mod() * Vector2(
 		cos(t) * amplitude.x,
 		sin(t) * amplitude.y,

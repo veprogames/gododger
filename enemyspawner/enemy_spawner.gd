@@ -2,14 +2,14 @@ class_name EnemySpawner
 extends Node2D
 
 signal node_spawned(node: Node2D)
-signal coin_spawned(coin: Coin)
+signal key_spawned(key: KeyCollectible)
 
 @export var enemy_scene: PackedScene
 @export var nextlevel_scene: PackedScene
 @export var player: Player
 @export var level: Level
 
-var Coin := preload("res://coin/coin.tscn")
+var Key := preload("res://key/key.tscn")
 
 var PeriodicMoveBehavior := preload("res://behavior/move/periodic_move_behavior.tscn")
 var PeriodicShootBehavior := preload("res://behavior/shoot/periodic_shoot_behavior.tscn")
@@ -20,10 +20,10 @@ func _ready():
 	viewport = player.get_camera_rect()
 
 func get_move_chance() -> float:
-	return min(level.level * 0.01 + 0.1, 0.75)
+	return minf(level.level * 0.01 + 0.1, 0.75)
 
 func get_shoot_chance() -> float:
-	return min(level.level * 0.01 + 0.1, 0.75)
+	return minf(level.level * 0.01 + 0.1, 0.75)
 
 func get_behaviors(enemy: Enemy) -> Array[Behavior]:
 	var result: Array[Behavior] = []
@@ -61,14 +61,15 @@ func spawn_nextlevel():
 		nextlevel.position = get_random_position(24)
 		emit_signal("node_spawned", nextlevel)
 
-func spawn_coin() -> void:
-	var coin := Coin.instantiate() as Coin
-	coin.position = get_random_position(8)
-	emit_signal("coin_spawned", coin)
+func spawn_key() -> void:
+	var key := Key.instantiate() as KeyCollectible
+	key.position = get_random_position(8)
+	emit_signal("key_spawned", key)
 
 func get_enemy_count() -> int:
-	return 10 + clamp(level.level, 0, 20) * 2 \
-		+ int(clamp(level.level - 20, 0, 100) / 5)
+	@warning_ignore("integer_division")
+	return 10 + clampi(level.level, 0, 20) * 2 \
+		+ int(clampi(level.level - 20, 0, 100) / 5)
 
 func spawn_level(level_: int):
 	seed(level_)
@@ -76,5 +77,5 @@ func spawn_level(level_: int):
 		spawn_enemy()
 	spawn_nextlevel()
 	for i in range(4):
-		spawn_coin()
+		spawn_key()
 	player.trigger_safezone.call_deferred()

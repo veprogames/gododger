@@ -1,9 +1,9 @@
 extends CanvasLayer
 
 @export var level: Level
-@onready var label_level := $LabelLevel
-@onready var label_timer := $LabelTimer
-@onready var label_score := $LabelScore
+@onready var label_level := $LabelLevel as Label
+@onready var label_timer := $LabelTimer as Label
+@onready var label_score := $LabelScore as Label
 
 func _ready() -> void:
 	label_level.text = "Level %d" % (level.level + 1)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cr1t6hyr0mrrp"]
 
-[ext_resource type="Script" path="res://coin/coin.gd" id="1_ittbb"]
-[ext_resource type="Texture2D" uid="uid://m3xfugacrnh8" path="res://coin/coin.png" id="1_r00pl"]
-[ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="2_1d14i"]
+[ext_resource type="Script" path="res://key/key.gd" id="1_uvbb8"]
+[ext_resource type="Texture2D" uid="uid://rhb4r2e2vk2f" path="res://key/key.png" id="2_gjnp3"]
+[ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="3_vfe7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxudv"]
 size = Vector2(6, 8)
@@ -10,15 +10,15 @@ size = Vector2(6, 8)
 [sub_resource type="CircleShape2D" id="CircleShape2D_g82kg"]
 radius = 8.0
 
-[node name="Coin" type="Area2D"]
-script = ExtResource("1_ittbb")
+[node name="Key" type="Area2D"]
+script = ExtResource("1_uvbb8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_r00pl")
+texture = ExtResource("2_gjnp3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uxudv")
 
-[node name="SafeZone" parent="." instance=ExtResource("2_1d14i")]
+[node name="SafeZone" parent="." instance=ExtResource("3_vfe7t")]
 shape = SubResource("CircleShape2D_g82kg")

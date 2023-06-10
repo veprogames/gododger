@@ -3,14 +3,13 @@ extends Node2D
 
 signal level_changed(level: int)
 
-@export var spawner: EnemySpawner
-@export var enemy_container: Node2D
-
 @export var level := 0
 var elapsed := 0.0
 var additional_score := 0
 
-@onready var container_coins := $Coins
+@onready var spawner := $EnemySpawner as EnemySpawner
+@onready var container_objects := $Objects
+@onready var container_keys := $Keys
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,10 +21,10 @@ func _process(delta):
 	elapsed += delta
 
 func spawn_current_level() -> void:
-	for enemy in enemy_container.get_children():
+	for enemy in container_objects.get_children():
 		enemy.queue_free()
-	for coin in container_coins.get_children():
-		coin.queue_free()
+	for key in container_keys.get_children():
+		key.queue_free()
 	spawner.spawn_level(level)
 
 func get_score() -> int:
@@ -33,13 +32,13 @@ func get_score() -> int:
 	return int(1000 * level ** 2 / time_per_level) + additional_score
 
 func _on_player_finished() -> void:
-	if container_coins.get_child_count() == 0:
+	if container_keys.get_child_count() == 0:
 		level += 1
 		emit_signal("level_changed", level)
 		spawn_current_level()
 
 func _on_enemy_spawner_node_spawned(node) -> void:
-	enemy_container.add_child.call_deferred(node)
+	container_objects.add_child.call_deferred(node)
 
 
 func _on_player_died() -> void:
@@ -48,11 +47,9 @@ func _on_player_died() -> void:
 	emit_signal("level_changed", level)
 	spawn_current_level()
 
-
-func _on_player_coin_collected(coin: Coin) -> void:
-	additional_score += coin.get_value()
-	coin.queue_free()
+func _on_enemy_spawner_key_spawned(key) -> void:
+	container_keys.add_child.call_deferred(key)
 
 
-func _on_enemy_spawner_coin_spawned(coin) -> void:
-	container_coins.add_child.call_deferred(coin)
+func _on_player_key_collected(key: KeyCollectible) -> void:
+	additional_score += key.get_value()
