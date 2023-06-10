@@ -44,9 +44,7 @@ func _input(event):
 		update_sprite(mouse_event.relative)
 
 func _on_area_entered(area):
-	var enemy := area as Enemy
-	var next_level := area as NextLevel
-	if enemy:
+	if area is Enemy or area is Bullet:
 		emit_signal("died")
-	if next_level:
+	if area is NextLevel:
 		emit_signal("finished")

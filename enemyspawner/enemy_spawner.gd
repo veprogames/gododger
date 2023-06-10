@@ -9,6 +9,7 @@ signal node_spawned(node: Node2D)
 @export var level: Level
 
 var PeriodicMoveBehavior := preload("res://behavior/move/periodic_move_behavior.tscn")
+var PeriodicShootBehavior := preload("res://behavior/shoot/periodic_shoot_behavior.tscn")
 
 var viewport: Rect2
 
@@ -16,15 +17,22 @@ func _ready():
 	viewport = player.get_camera_rect()
 
 func get_move_chance() -> float:
-	return min(level.level * 0.02, 0.75)
+	return min(level.level * 0.01 + 0.1, 0.75)
+
+func get_shoot_chance() -> float:
+	return min(level.level * 0.01 + 0.1, 0.75)
 
 func get_behaviors(enemy: Enemy) -> Array[Behavior]:
 	var result: Array[Behavior] = []
 	if randf() < get_move_chance():
 		var move := PeriodicMoveBehavior.instantiate()
-		move.level = level.level
-		move.enemy = enemy
 		result.push_back(move)
+	if randf() < get_shoot_chance():
+		var shoot := PeriodicShootBehavior.instantiate()
+		result.push_back(shoot)
+	for b in result:
+		b.level = level.level
+		b.enemy = enemy
 	return result
 
 func get_random_position(padding: float = 0.0) -> Vector2:

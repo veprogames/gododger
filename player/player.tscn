@@ -28,7 +28,7 @@ color = Color(0, 1, 1, 1)
 color_ramp = SubResource("GradientTexture1D_2hrin")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_76ldr"]
-radius = 24.0
+radius = 32.0
 
 [node name="Player" type="Area2D"]
 texture_filter = 1
