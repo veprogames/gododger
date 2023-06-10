@@ -23,7 +23,7 @@ func get_camera_rect() -> Rect2:
 func update_sprite(relative: Vector2) -> void:
 	var dir := relative.angle()
 	var vel := relative.length()
-	var scale_factor := 1 + 0.02 * vel
+	var scale_factor := 1 + 0.06 * vel
 	sprite.rotation = dir
 	sprite.scale.x = scale_factor
 	sprite.scale.y = 1 / scale_factor
