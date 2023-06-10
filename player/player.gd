@@ -19,11 +19,9 @@ func trigger_safezone() -> void:
 	safe_zone.trigger()
 
 func get_camera_rect() -> Rect2:
-	var viewport_rect := get_viewport_rect()
-	var viewport_transform := get_viewport_transform()
-	viewport_rect.size /= viewport_transform.x.x
-	viewport_rect.position -= viewport_transform.origin / viewport_transform.x.x
-	return viewport_rect
+	var origin := camera.get_screen_center_position()
+	var size = camera.get_viewport_rect().size / camera.zoom
+	return Rect2(Vector2(origin - size / 2.0), size)
 
 func update_sprite(relative: Vector2) -> void:
 	var dir := relative.angle()
