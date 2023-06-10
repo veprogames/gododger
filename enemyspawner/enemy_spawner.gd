@@ -2,11 +2,14 @@ class_name EnemySpawner
 extends Node2D
 
 signal node_spawned(node: Node2D)
+signal coin_spawned(coin: Coin)
 
 @export var enemy_scene: PackedScene
 @export var nextlevel_scene: PackedScene
 @export var player: Player
 @export var level: Level
+
+var Coin := preload("res://coin/coin.tscn")
 
 var PeriodicMoveBehavior := preload("res://behavior/move/periodic_move_behavior.tscn")
 var PeriodicShootBehavior := preload("res://behavior/shoot/periodic_shoot_behavior.tscn")
@@ -55,8 +58,13 @@ func spawn_enemy():
 func spawn_nextlevel():
 	var nextlevel := nextlevel_scene.instantiate() as NextLevel
 	if nextlevel:
-		nextlevel.position = get_random_position(32)
+		nextlevel.position = get_random_position(24)
 		emit_signal("node_spawned", nextlevel)
+
+func spawn_coin() -> void:
+	var coin := Coin.instantiate() as Coin
+	coin.position = get_random_position(8)
+	emit_signal("coin_spawned", coin)
 
 func get_enemy_count() -> int:
 	return 10 + clamp(level.level, 0, 20) * 2 \
@@ -67,4 +75,6 @@ func spawn_level(level_: int):
 	for i in range(get_enemy_count()):
 		spawn_enemy()
 	spawn_nextlevel()
+	for i in range(4):
+		spawn_coin()
 	player.trigger_safezone.call_deferred()

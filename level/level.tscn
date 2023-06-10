@@ -43,6 +43,10 @@ metadata/_edit_lock_ = true
 [node name="UI" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6_1rctm")]
 level = NodePath("..")
 
+[node name="Coins" type="Node2D" parent="."]
+
+[connection signal="coin_collected" from="Player" to="." method="_on_player_coin_collected"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="finished" from="Player" to="." method="_on_player_finished"]
+[connection signal="coin_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_coin_spawned"]
 [connection signal="node_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_node_spawned"]

@@ -3,6 +3,7 @@ extends Area2D
 
 signal finished()
 signal died()
+signal coin_collected(coin: Coin)
 
 @export var camera: Camera2D
 
@@ -46,5 +47,8 @@ func _input(event):
 func _on_area_entered(area):
 	if area is Enemy or area is Bullet:
 		emit_signal("died")
+	if area is Coin:
+		var coin = area as Coin
+		emit_signal("coin_collected", coin)
 	if area is NextLevel:
 		emit_signal("finished")
