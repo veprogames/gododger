@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://c11qqxbj740as"]
+
+[ext_resource type="Script" path="res://nextlevel/next_level.gd" id="1_huoms"]
+[ext_resource type="Texture2D" uid="uid://c33ovejgt1i1f" path="res://nextlevel/finish.png" id="1_su52f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0iunv"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_golky"]
+size = Vector2(8, 8)
+
+[sub_resource type="Gradient" id="Gradient_bqu5e"]
+offsets = PackedFloat32Array(0, 0.207921, 0.742574, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2hrin"]
+gradient = SubResource("Gradient_bqu5e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cuyey"]
+emission_shape = 3
+emission_box_extents = Vector3(4, 4, 1)
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 1.0
+color_ramp = SubResource("GradientTexture1D_2hrin")
+
+[node name="NextLevel" type="Area2D"]
+z_index = 1
+script = ExtResource("1_huoms")
+safe_area = SubResource("CircleShape2D_0iunv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_su52f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_golky")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_cuyey")
+lifetime = 1.5

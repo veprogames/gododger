@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2nlenin7f3m"]
+
+[ext_resource type="PackedScene" uid="uid://bta3la5ob4um5" path="res://player/player.tscn" id="1_5ibnl"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_v1ekr"]
+[ext_resource type="PackedScene" uid="uid://rg5r3jntfbnw" path="res://enemyspawner/enemy_spawner.tscn" id="3_aovol"]
+[ext_resource type="PackedScene" uid="uid://b3sfwgdvwgcs8" path="res://enemy/enemy.tscn" id="3_wgvs2"]
+[ext_resource type="PackedScene" uid="uid://c11qqxbj740as" path="res://nextlevel/next_level.tscn" id="5_kkr4l"]
+[ext_resource type="PackedScene" uid="uid://bu1132gssq8ij" path="res://ui/ui.tscn" id="6_1rctm"]
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("spawner", "enemy_container")]
+script = ExtResource("1_v1ekr")
+spawner = NodePath("EnemySpawner")
+enemy_container = NodePath("Enemies")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_5ibnl")]
+position = Vector2(-139, -71)
+camera = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("player", "level") instance=ExtResource("3_aovol")]
+enemy_scene = ExtResource("3_wgvs2")
+nextlevel_scene = ExtResource("5_kkr4l")
+player = NodePath("../Player")
+level = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.203922, 0.286275, 1)
+metadata/_edit_lock_ = true
+
+[node name="Enemies" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="UI" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6_1rctm")]
+level = NodePath("..")
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="finished" from="Player" to="." method="_on_player_finished"]
+[connection signal="node_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_node_spawned"]

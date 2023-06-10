@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://6ofo34fitnot"]
+
+[ext_resource type="PackedScene" uid="uid://cg0ob531pwsy" path="res://behavior/move/move_behavior.tscn" id="1_ywp7x"]
+[ext_resource type="Script" path="res://behavior/move/periodic_move_behavior.gd" id="2_kgl17"]
+
+[node name="PeriodicMoveBehavior" instance=ExtResource("1_ywp7x")]
+script = ExtResource("2_kgl17")

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dpvtn5h8ykqux"]
+
+[sub_resource type="SystemFont" id="SystemFont_unv40"]
+
+[resource]
+Label/font_sizes/font_size = 32
+Label/fonts/font = SubResource("SystemFont_unv40")
