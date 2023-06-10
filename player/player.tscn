@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bta3la5ob4um5"]
+[gd_scene load_steps=9 format=3 uid="uid://bta3la5ob4um5"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_2qrnp"]
 [ext_resource type="Texture2D" uid="uid://dphmtnwibd6lu" path="res://player/player.png" id="1_6qqfb"]
+[ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="3_ggu7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w44b"]
 size = Vector2(4, 4)
@@ -26,6 +27,9 @@ orbit_velocity_max = 0.0
 color = Color(0, 1, 1, 1)
 color_ramp = SubResource("GradientTexture1D_2hrin")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_76ldr"]
+radius = 24.0
+
 [node name="Player" type="Area2D"]
 texture_filter = 1
 script = ExtResource("1_2qrnp")
@@ -42,5 +46,8 @@ z_index = -1
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_42l57")
 lifetime = 0.4
+
+[node name="SafeZone" parent="." instance=ExtResource("3_ggu7b")]
+shape = SubResource("CircleShape2D_76ldr")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

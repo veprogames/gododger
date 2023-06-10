@@ -7,11 +7,16 @@ signal died()
 @export var camera: Camera2D
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var safe_zone := $SafeZone as SafeZone
 
 var viewport: Rect2
 
 func _ready() -> void:
 	viewport = get_camera_rect()
+	trigger_safezone()
+
+func trigger_safezone() -> void:
+	safe_zone.trigger()
 
 func get_camera_rect() -> Rect2:
 	var viewport_rect := get_viewport_rect()

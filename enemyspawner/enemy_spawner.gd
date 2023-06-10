@@ -35,14 +35,13 @@ func get_random_position() -> Vector2:
 
 func spawn_enemy():
 	var pos := get_random_position()
-	if pos.distance_to(player.position) > 16:
-		var enemy := enemy_scene.instantiate() as Enemy
-		if enemy:
-			var behaviors := get_behaviors(enemy)
-			enemy.position = pos
-			for b in behaviors:
-				enemy.add_child(b)
-			emit_signal("node_spawned", enemy)
+	var enemy := enemy_scene.instantiate() as Enemy
+	if enemy:
+		var behaviors := get_behaviors(enemy)
+		enemy.position = pos
+		for b in behaviors:
+			enemy.add_child(b)
+		emit_signal("node_spawned", enemy)
 
 func spawn_nextlevel():
 	var nextlevel := nextlevel_scene.instantiate() as NextLevel
@@ -59,3 +58,4 @@ func spawn_level(level_: int):
 	for i in range(get_enemy_count()):
 		spawn_enemy()
 	spawn_nextlevel()
+	player.trigger_safezone.call_deferred()

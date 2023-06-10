@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c11qqxbj740as"]
+[gd_scene load_steps=9 format=3 uid="uid://c11qqxbj740as"]
 
 [ext_resource type="Script" path="res://nextlevel/next_level.gd" id="1_huoms"]
 [ext_resource type="Texture2D" uid="uid://c33ovejgt1i1f" path="res://nextlevel/finish.png" id="1_su52f"]
+[ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="3_o1nro"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0iunv"]
 radius = 16.0
@@ -43,3 +44,6 @@ shape = SubResource("RectangleShape2D_golky")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 process_material = SubResource("ParticleProcessMaterial_cuyey")
 lifetime = 1.5
+
+[node name="SafeZone" parent="." instance=ExtResource("3_o1nro")]
+shape = SubResource("CircleShape2D_0iunv")
