@@ -27,11 +27,12 @@ func get_behaviors(enemy: Enemy) -> Array[Behavior]:
 		result.push_back(move)
 	return result
 
-func get_random_position() -> Vector2:
-	return Vector2(
-		randf_range(0, viewport.size.x),
-		randf_range(0, viewport.size.y)
+func get_random_position(padding: float = 0.0) -> Vector2:
+	var pos = Vector2(
+		randf_range(padding, viewport.size.x - padding),
+		randf_range(padding, viewport.size.y - padding)
 	) + viewport.position
+	return pos.snapped(Vector2.ONE * 8)
 
 func spawn_enemy():
 	var pos := get_random_position()
@@ -46,7 +47,7 @@ func spawn_enemy():
 func spawn_nextlevel():
 	var nextlevel := nextlevel_scene.instantiate() as NextLevel
 	if nextlevel:
-		nextlevel.position = get_random_position()
+		nextlevel.position = get_random_position(32)
 		emit_signal("node_spawned", nextlevel)
 
 func get_enemy_count() -> int:
