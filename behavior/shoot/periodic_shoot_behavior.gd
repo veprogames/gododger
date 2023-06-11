@@ -19,6 +19,7 @@ func _ready() -> void:
 	timer.wait_time = 0.5 / (get_bpm_rate() * speed)
 
 func shoot_pattern() -> void:
+	enemy.play_shoot_animation()
 	for i in range(count):
 		var a := i / (count as float) * TAU
 		shoot(a + offset + rotate_speed * elapsed, bullet_speed)
