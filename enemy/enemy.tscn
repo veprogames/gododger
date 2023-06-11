@@ -10,9 +10,16 @@ size = Vector2(8, 8)
 script = ExtResource("1_xwy6h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0.239216, 1)
 texture_filter = 1
 texture = ExtResource("1_6jrjr")
+
+[node name="Shadow" type="ColorRect" parent="Sprite2D"]
+z_index = -1
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 0.470588)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0w0is")

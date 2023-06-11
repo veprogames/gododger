@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dpvtn5h8ykqux"]
 
-[sub_resource type="SystemFont" id="SystemFont_unv40"]
+[ext_resource type="FontFile" uid="uid://dkv7uv7vt3qfp" path="res://fonts/PressStart2P-Regular.ttf" id="1_u40xv"]
 
 [resource]
 Label/font_sizes/font_size = 32
-Label/fonts/font = SubResource("SystemFont_unv40")
+Label/fonts/font = ExtResource("1_u40xv")
