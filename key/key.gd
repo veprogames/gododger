@@ -7,8 +7,5 @@ extends Area2D
 func _ready() -> void:
 	safe_zone.trigger()
 
-func get_value() -> int:
-	return 25 * (level.level + 1) ** 2
-
 func collect() -> void:
 	queue_free()

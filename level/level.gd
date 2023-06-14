@@ -5,7 +5,7 @@ signal level_changed(level: int)
 
 @export var level := 0
 var elapsed := 0.0
-var additional_score := 0
+var score_multiplier := 1.0
 
 @onready var spawner := $EnemySpawner as EnemySpawner
 @onready var container_objects := $Objects
@@ -29,7 +29,7 @@ func spawn_current_level() -> void:
 
 func get_score() -> int:
 	var time_per_level := elapsed / (level + 1)
-	return int(1000 * level ** 2 / time_per_level) + additional_score
+	return int(10 * level ** 2 / time_per_level) * score_multiplier
 
 func _on_player_finished() -> void:
 	if container_keys.get_child_count() == 0:
@@ -44,6 +44,7 @@ func _on_enemy_spawner_node_spawned(node) -> void:
 func _on_player_died() -> void:
 	level = 0
 	elapsed = 0
+	score_multiplier = 1.0
 	emit_signal("level_changed", level)
 	spawn_current_level()
 
@@ -52,4 +53,4 @@ func _on_enemy_spawner_key_spawned(key) -> void:
 
 
 func _on_player_key_collected(key: KeyCollectible) -> void:
-	additional_score += key.get_value()
+	score_multiplier += 0.04

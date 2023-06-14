@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	label_timer.text = "%.3f" % level.elapsed
-	label_score.text = "%06d" % level.get_score()
+	label_score.text = "%05d" % level.get_score()
 
 func _on_level_changed(current_level: int) -> void:
 	label_level.text = "%02d" % (current_level + 1)
