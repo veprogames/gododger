@@ -29,7 +29,7 @@ func spawn_current_level() -> void:
 
 func get_score() -> int:
 	var time_per_level := elapsed / (level + 1)
-	return int(10 * level ** 2 / time_per_level) * score_multiplier
+	return int(10 * level ** 2 / time_per_level * score_multiplier)
 
 func _on_player_finished() -> void:
 	if container_keys.get_child_count() == 0:
