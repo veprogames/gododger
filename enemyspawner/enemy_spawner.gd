@@ -72,10 +72,12 @@ func get_enemy_count() -> int:
 		+ int(clampi(level.level - 20, 0, 100) / 5)
 
 func spawn_level(level_: int):
+	@warning_ignore("integer_division")
+	var key_count := mini(4 + int(level.level / 10), 8)
 	seed(level_)
 	for i in range(get_enemy_count()):
 		spawn_enemy()
 	spawn_nextlevel()
-	for i in range(4):
+	for i in range(key_count):
 		spawn_key()
 	player.trigger_safezone.call_deferred()

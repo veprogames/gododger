@@ -31,8 +31,14 @@ func get_score() -> int:
 	var time_per_level := elapsed / (level + 1)
 	return int(10 * level ** 2 / time_per_level * score_multiplier)
 
+func is_finished() -> bool:
+	for key in container_keys.get_children():
+		if key is KeyCollectible and not key.collected:
+			return false
+	return true
+
 func _on_player_finished() -> void:
-	if container_keys.get_child_count() == 0:
+	if is_finished():
 		level += 1
 		emit_signal("level_changed", level)
 		spawn_current_level()
@@ -52,5 +58,5 @@ func _on_enemy_spawner_key_spawned(key) -> void:
 	container_keys.add_child.call_deferred(key)
 
 
-func _on_player_key_collected(key: KeyCollectible) -> void:
+func _on_player_key_collected() -> void:
 	score_multiplier += 0.04

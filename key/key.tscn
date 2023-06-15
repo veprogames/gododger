@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cr1t6hyr0mrrp"]
 
-[ext_resource type="Script" path="res://key/key.gd" id="1_uvbb8"]
+[ext_resource type="Script" path="res://key/key.gd" id="1_eukmg"]
 [ext_resource type="Texture2D" uid="uid://rhb4r2e2vk2f" path="res://key/key.png" id="2_gjnp3"]
 [ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="3_vfe7t"]
 
@@ -9,6 +9,45 @@ size = Vector2(12, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g82kg"]
 radius = 8.0
+
+[sub_resource type="Animation" id="Animation_ma7co"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_h5pgp"]
 resource_name = "colelct"
@@ -50,45 +89,6 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(2, -4), Vector2(10, 35)]
 }
 
-[sub_resource type="Animation" id="Animation_ma7co"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jb7o"]
 _data = {
 "RESET": SubResource("Animation_ma7co"),
@@ -96,7 +96,7 @@ _data = {
 }
 
 [node name="Key" type="Area2D"]
-script = ExtResource("1_uvbb8")
+script = ExtResource("1_eukmg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
