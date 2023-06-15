@@ -12,9 +12,14 @@ signal key_collected()
 
 var viewport: Rect2
 
+var last_input_move := Vector2.ZERO
+
 func _ready() -> void:
 	viewport = get_camera_rect()
 	trigger_safezone()
+
+func _process(_delta: float) -> void:
+	update_sprite(last_input_move)
 
 func trigger_safezone() -> void:
 	safe_zone.trigger()
@@ -27,7 +32,7 @@ func get_camera_rect() -> Rect2:
 func update_sprite(relative: Vector2) -> void:
 	var dir := relative.angle()
 	var vel := relative.length()
-	var scale_factor := 1 + 0.06 * vel
+	var scale_factor := 1 + 0.05 * vel
 	sprite.rotation = dir
 	sprite.scale.x = scale_factor
 	sprite.scale.y = 1 / scale_factor
@@ -42,7 +47,7 @@ func _input(event: InputEvent) -> void:
 			viewport.position,
 			viewport.position + viewport.size
 		)
-		update_sprite(mouse_event.relative)
+		last_input_move = mouse_event.relative
 
 func _on_area_entered(area: Area2D):
 	if area is Enemy or area is Bullet:

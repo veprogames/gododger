@@ -68,7 +68,7 @@ func spawn_key() -> void:
 
 func get_enemy_count() -> int:
 	@warning_ignore("integer_division")
-	return 10 + clampi(level.level, 0, 20) * 2 \
+	return 6 + clampi(level.level, 0, 20) \
 		+ int(clampi(level.level - 20, 0, 100) / 5)
 
 func spawn_level(level_: int):
