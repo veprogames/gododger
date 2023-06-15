@@ -3,7 +3,7 @@ extends Area2D
 
 signal finished()
 signal died()
-signal key_collected()
+signal key_collected(key: KeyCollectible)
 
 @export var camera: Camera2D
 
@@ -54,7 +54,7 @@ func _on_area_entered(area: Area2D):
 		emit_signal("died")
 	if area is KeyCollectible:
 		var key = area as KeyCollectible
-		emit_signal("key_collected")
+		emit_signal("key_collected", key)
 		key.collect()
-	if area is NextLevel:
+	if area is NextLevel and (area as NextLevel).active:
 		emit_signal("finished")
