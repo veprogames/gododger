@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu1132gssq8ij"]
+[gd_scene load_steps=6 format=3 uid="uid://bu1132gssq8ij"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_rpnsq"]
 [ext_resource type="Theme" uid="uid://ksirgeh6ekw" path="res://ui_bg_theme.tres" id="2_pe3km"]
 [ext_resource type="Theme" uid="uid://dpvtn5h8ykqux" path="res://ui_theme.tres" id="2_whjhw"]
+[ext_resource type="Texture2D" uid="uid://blw4t3rmx435y" path="res://ui/highscore.png" id="4_mctbh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crwri"]
 
 [node name="UI" type="CanvasLayer"]
 layer = -1
@@ -44,10 +47,40 @@ text = "0:00.000"
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 26.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 75.0
 grow_horizontal = 2
+theme = ExtResource("2_whjhw")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -155.0
+offset_top = 8.0
+offset_bottom = 75.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("4_mctbh")
+expand_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_crwri")
+
+[node name="LabelHighscore" type="Label" parent="HBoxContainer"]
+layout_mode = 2
 theme = ExtResource("2_whjhw")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16

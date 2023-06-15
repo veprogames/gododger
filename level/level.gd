@@ -3,10 +3,12 @@ extends Node2D
 
 signal level_changed(level: int)
 signal everything_collected()
+signal game_restarted(highscore: int)
 
 @export var level := 0
 var elapsed := 0.0
 var score_multiplier := 1.0
+var highscore := 0
 
 @onready var spawner := $EnemySpawner as EnemySpawner
 @onready var container_objects := $Objects
@@ -45,12 +47,14 @@ func _on_enemy_spawner_node_spawned(node) -> void:
 
 
 func _on_player_died() -> void:
+	highscore = max(get_score(), highscore)
 	level = 0
 	elapsed = 0
 	score_multiplier = 1.0
 	keys_left = []
 	emit_signal("level_changed", level)
 	spawn_current_level()
+	game_restarted.emit(highscore)
 
 func _on_enemy_spawner_key_spawned(key) -> void:
 	container_keys.add_child.call_deferred(key)
