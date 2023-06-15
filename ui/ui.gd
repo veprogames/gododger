@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var label_level := $LabelLevel as Label
 @onready var label_timer := $LabelTimer as Label
 @onready var label_score := $LabelScore as Label
+@onready var label_song := $LabelSong as Label
 @onready var label_highscore := $HBoxContainer/LabelHighscore as Label
 
 func _ready() -> void:
@@ -11,6 +12,9 @@ func _ready() -> void:
 	label_level.text = "%02d" % (level.level + 1)
 	level.connect("level_changed", _on_level_changed)
 	level.game_restarted.connect(update_highscore)
+	
+	var tween := create_tween()
+	tween.tween_property(label_song, "modulate", Color.TRANSPARENT, 15)
 
 func _process(_delta: float) -> void:
 	label_timer.text = "%.3f" % level.elapsed

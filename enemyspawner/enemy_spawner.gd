@@ -53,6 +53,7 @@ func spawn_enemy():
 		enemy.position = pos
 		for b in behaviors:
 			enemy.add_child(b)
+			b.bpm = level.get_bpm()
 		emit_signal("node_spawned", enemy)
 
 func spawn_nextlevel():

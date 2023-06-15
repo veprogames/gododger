@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2nlenin7f3m"]
+[gd_scene load_steps=13 format=3 uid="uid://b2nlenin7f3m"]
 
 [ext_resource type="PackedScene" uid="uid://bta3la5ob4um5" path="res://player/player.tscn" id="1_5ibnl"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_v1ekr"]
@@ -6,6 +6,44 @@
 [ext_resource type="PackedScene" uid="uid://b3sfwgdvwgcs8" path="res://enemy/enemy.tscn" id="3_wgvs2"]
 [ext_resource type="PackedScene" uid="uid://c11qqxbj740as" path="res://nextlevel/next_level.tscn" id="5_kkr4l"]
 [ext_resource type="PackedScene" uid="uid://bu1132gssq8ij" path="res://ui/ui.tscn" id="6_1rctm"]
+[ext_resource type="AudioStream" uid="uid://dkrjj6w050t2m" path="res://music/22.ogg" id="7_6tw4s"]
+[ext_resource type="PackedScene" uid="uid://f71l5tvqj3os" path="res://musicsyncer/music_syncer.tscn" id="8_0ojrb"]
+
+[sub_resource type="Gradient" id="Gradient_hlobh"]
+offsets = PackedFloat32Array(0.0222222, 0.281481, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_338jt"]
+gradient = SubResource("Gradient_hlobh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_40tj0"]
+emission_shape = 3
+emission_box_extents = Vector3(250, 150, 1)
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 2.0
+scale_max = 2.0
+color = Color(0.156863, 0.156863, 0.227451, 1)
+color_ramp = SubResource("GradientTexture1D_338jt")
+
+[sub_resource type="Environment" id="Environment_pddc8"]
+background_mode = 3
+glow_enabled = true
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_levels/6 = 1.0
+glow_levels/7 = 1.0
+glow_intensity = 1.0
+glow_strength = 1.25
+glow_blend_mode = 0
+glow_hdr_threshold = 0.6
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_v1ekr")
@@ -13,6 +51,10 @@ script = ExtResource("1_v1ekr")
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_5ibnl")]
 position = Vector2(-139, -71)
 camera = NodePath("../Camera2D")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Player"]
+position = Vector2(139, 71)
+process_material = SubResource("ParticleProcessMaterial_40tj0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6, 6)
@@ -42,6 +84,17 @@ metadata/_edit_lock_ = true
 level = NodePath("..")
 
 [node name="Keys" type="Node2D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6tw4s")
+autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pddc8")
+
+[node name="MusicSyncer" parent="." node_paths=PackedStringArray("environment", "camera") instance=ExtResource("8_0ojrb")]
+environment = NodePath("../WorldEnvironment")
+camera = NodePath("../Camera2D")
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="finished" from="Player" to="." method="_on_player_finished"]

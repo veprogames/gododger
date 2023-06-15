@@ -11,6 +11,7 @@ var score_multiplier := 1.0
 var highscore := 0
 
 @onready var spawner := $EnemySpawner as EnemySpawner
+@onready var music_player := $MusicPlayer as AudioStreamPlayer
 @onready var container_objects := $Objects
 @onready var container_keys := $Keys
 
@@ -66,3 +67,7 @@ func _on_player_key_collected(key: KeyCollectible) -> void:
 	keys_left.erase(key)
 	if len(keys_left) == 0:
 		everything_collected.emit()
+
+func get_bpm() -> int:
+	var stream = music_player.stream as AudioStreamOggVorbis
+	return stream.bpm if stream else 1

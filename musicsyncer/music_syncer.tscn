@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://f71l5tvqj3os"]
+
+[ext_resource type="Script" path="res://musicsyncer/music_syncer.gd" id="1_yxdoh"]
+
+[node name="MusicSyncer" type="Node2D"]
+script = ExtResource("1_yxdoh")

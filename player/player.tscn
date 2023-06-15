@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bta3la5ob4um5"]
+[gd_scene load_steps=11 format=3 uid="uid://bta3la5ob4um5"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_2qrnp"]
 [ext_resource type="Texture2D" uid="uid://dphmtnwibd6lu" path="res://player/player.png" id="1_6qqfb"]
@@ -14,6 +14,13 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2hrin"]
 gradient = SubResource("Gradient_bqu5e")
 
+[sub_resource type="Curve" id="Curve_adx7a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_el28u"]
+curve = SubResource("Curve_adx7a")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_42l57"]
 emission_shape = 3
 emission_box_extents = Vector3(4, 4, 1)
@@ -24,6 +31,7 @@ initial_velocity_min = 2.0
 initial_velocity_max = 2.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_el28u")
 color = Color(0, 1, 1, 1)
 color_ramp = SubResource("GradientTexture1D_2hrin")
 
@@ -42,9 +50,10 @@ shape = SubResource("RectangleShape2D_5w44b")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = -1
-amount = 12
+amount = 16
 process_material = SubResource("ParticleProcessMaterial_42l57")
 lifetime = 0.4
+fixed_fps = 60
 
 [node name="SafeZone" parent="." instance=ExtResource("3_ggu7b")]
 shape = SubResource("CircleShape2D_76ldr")

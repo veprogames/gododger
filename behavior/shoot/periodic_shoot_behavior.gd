@@ -16,7 +16,7 @@ func _ready() -> void:
 	bullet_speed = 75.0 + 0.5 * level
 	rotate_speed = randf_range(-PI / 20, PI / 20) * level
 	
-	timer.wait_time = 0.5 / (get_bpm_rate() * speed)
+	timer.wait_time = 2 / (get_bpm_rate() * speed)
 
 func shoot_pattern() -> void:
 	enemy.play_shoot_animation()

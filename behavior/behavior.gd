@@ -2,7 +2,7 @@ class_name Behavior
 extends Node
 
 @export var enemy: Enemy
-@export var bpm: int = 128
+@export var bpm: int = 222
 ## used in conjunction of stage lvl to calc
 ## scaling difficulty
 @export var level: int
@@ -14,4 +14,4 @@ func _physics_process(delta: float) -> void:
 
 ## How many times per second based on bpm
 func get_bpm_rate() -> float:
-	return 60.0 / bpm
+	return bpm / 60.0
