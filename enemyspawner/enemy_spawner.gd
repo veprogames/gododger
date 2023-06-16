@@ -23,7 +23,7 @@ func get_move_chance() -> float:
 	return minf(level.level * 0.01 + 0.1, 0.75)
 
 func get_shoot_chance() -> float:
-	return minf(level.level * 0.01 + 0.1, 0.75)
+	return minf(level.level * 0.005 + 0.1, 0.75)
 
 func get_behaviors(enemy: Enemy) -> Array[Behavior]:
 	var result: Array[Behavior] = []
