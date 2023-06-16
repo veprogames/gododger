@@ -18,19 +18,18 @@ gradient = SubResource("Gradient_hlobh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_40tj0"]
 emission_shape = 3
-emission_box_extents = Vector3(250, 150, 1)
+emission_box_extents = Vector3(300, 200, 1)
 particle_flag_disable_z = true
-spread = 180.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = 10.0
-initial_velocity_max = 10.0
+initial_velocity_max = 20.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-angle_min = -720.0
-angle_max = 720.0
-scale_min = 2.0
-scale_max = 2.0
-color = Color(0.156863, 0.156863, 0.227451, 1)
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.156863, 0.156863, 0.227451, 0.501961)
 color_ramp = SubResource("GradientTexture1D_338jt")
 
 [sub_resource type="Environment" id="Environment_pddc8"]
@@ -52,12 +51,16 @@ script = ExtResource("1_v1ekr")
 position = Vector2(-139, -71)
 camera = NodePath("../Camera2D")
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Player"]
-position = Vector2(139, 71)
-process_material = SubResource("ParticleProcessMaterial_40tj0")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6, 6)
+
+[node name="BGParticles" type="GPUParticles2D" parent="Camera2D"]
+z_index = -1
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_40tj0")
+lifetime = 3.0
+preprocess = 5.0
+visibility_rect = Rect2(-300.771, -235.378, 601.332, 434.998)
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player", "level") instance=ExtResource("3_aovol")]
 enemy_scene = ExtResource("3_wgvs2")
@@ -92,9 +95,10 @@ autoplay = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pddc8")
 
-[node name="MusicSyncer" parent="." node_paths=PackedStringArray("environment", "camera") instance=ExtResource("8_0ojrb")]
+[node name="MusicSyncer" parent="." node_paths=PackedStringArray("environment", "camera", "bg_particles") instance=ExtResource("8_0ojrb")]
 environment = NodePath("../WorldEnvironment")
 camera = NodePath("../Camera2D")
+bg_particles = NodePath("../Camera2D/BGParticles")
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="finished" from="Player" to="." method="_on_player_finished"]
