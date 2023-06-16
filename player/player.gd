@@ -12,14 +12,29 @@ signal key_collected(key: KeyCollectible)
 
 var viewport: Rect2
 
-var last_input_move := Vector2.ZERO
+var last_times: Array[float] = []
+var last_positions: Array[Vector2] = []
 
 func _ready() -> void:
 	viewport = get_camera_rect()
 	trigger_safezone()
 
-func _process(_delta: float) -> void:
-	update_sprite(last_input_move)
+func _process(delta: float) -> void:
+	last_positions.push_front(position)
+	for i in range(len(last_times)):
+		last_times[i] += delta
+	last_times.push_front(0.0)
+	if last_times[len(last_times) - 1] > 0.1:
+		last_positions.pop_back()
+		last_times.pop_back()
+	# get move speed over last frames
+	var move_delta := get_speed_over_time(last_positions)
+	update_sprite(move_delta)
+
+func get_speed_over_time(positions: Array[Vector2]) -> Vector2:
+	if len(positions) < 2:
+		return Vector2.ZERO
+	return positions[0] - positions[len(positions) - 1]
 
 func trigger_safezone() -> void:
 	safe_zone.trigger()
@@ -32,7 +47,8 @@ func get_camera_rect() -> Rect2:
 func update_sprite(relative: Vector2) -> void:
 	var dir := relative.angle()
 	var vel := relative.length()
-	var scale_factor := 1 + 0.05 * vel
+	var scale_factor := 1 + 0.02 * vel
+	scale_factor = minf(2, scale_factor)
 	sprite.rotation = dir
 	sprite.scale.x = scale_factor
 	sprite.scale.y = 1 / scale_factor
@@ -47,7 +63,6 @@ func _input(event: InputEvent) -> void:
 			viewport.position,
 			viewport.position + viewport.size
 		)
-		last_input_move = mouse_event.relative
 
 func _on_area_entered(area: Area2D):
 	if area is Enemy or area is Bullet:
