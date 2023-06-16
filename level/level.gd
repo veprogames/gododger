@@ -71,3 +71,8 @@ func _on_player_key_collected(key: KeyCollectible) -> void:
 func get_bpm() -> int:
 	var stream = music_player.stream as AudioStreamOggVorbis
 	return stream.bpm if stream else 1
+
+func _input(event: InputEvent) -> void:
+	var ev := event as InputEventKey
+	if ev and ev.pressed and ev.keycode == KEY_ESCAPE:
+		get_tree().quit()

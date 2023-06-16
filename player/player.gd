@@ -10,6 +10,8 @@ signal key_collected(key: KeyCollectible)
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var safe_zone := $SafeZone as SafeZone
 
+var do_squish := false
+
 var viewport: Rect2
 
 var last_times: Array[float] = []
@@ -18,6 +20,7 @@ var last_positions: Array[Vector2] = []
 func _ready() -> void:
 	viewport = get_camera_rect()
 	trigger_safezone()
+	do_squish = OS.get_cmdline_args().has("squish")
 
 func _process(delta: float) -> void:
 	last_positions.push_front(position)
@@ -47,11 +50,12 @@ func get_camera_rect() -> Rect2:
 func update_sprite(relative: Vector2) -> void:
 	var dir := relative.angle()
 	var vel := relative.length()
-	var scale_factor := 1 + 0.02 * vel
-	scale_factor = minf(2, scale_factor)
 	sprite.rotation = dir
-	sprite.scale.x = scale_factor
-	sprite.scale.y = 1 / scale_factor
+	if do_squish:
+		var scale_factor := 1 + 0.02 * vel
+		scale_factor = minf(2, scale_factor)
+		sprite.scale.x = scale_factor
+		sprite.scale.y = 1 / scale_factor
 
 func _input(event: InputEvent) -> void:
 	var mouse_event := event as InputEventMouseMotion
