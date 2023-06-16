@@ -20,6 +20,7 @@ func _ready() -> void:
 
 func shoot_pattern() -> void:
 	enemy.play_shoot_animation()
+	play_audio()
 	for i in range(count):
 		var a := i / (count as float) * TAU
 		shoot(a + offset + rotate_speed * elapsed, bullet_speed)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr1t6hyr0mrrp"]
+[gd_scene load_steps=10 format=3 uid="uid://cr1t6hyr0mrrp"]
 
 [ext_resource type="Script" path="res://key/key.gd" id="1_eukmg"]
 [ext_resource type="Texture2D" uid="uid://rhb4r2e2vk2f" path="res://key/key.png" id="2_gjnp3"]
 [ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="3_vfe7t"]
+[ext_resource type="AudioStream" uid="uid://cyeayr4oje1v7" path="res://key/collect.wav" id="4_5rchi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxudv"]
 size = Vector2(12, 6)
@@ -88,6 +89,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2, -4), Vector2(10, 35)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioCollect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jb7o"]
 _data = {
@@ -112,5 +127,8 @@ shape = SubResource("CircleShape2D_g82kg")
 libraries = {
 "": SubResource("AnimationLibrary_6jb7o")
 }
+
+[node name="AudioCollect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5rchi")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

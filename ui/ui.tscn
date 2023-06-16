@@ -55,7 +55,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_pe3km")
 theme_override_font_sizes/font_size = 48
-text = "Xtrullor - 22"
+text = "Xtrullor - 22
+ft. ZynAddSubFX"
+horizontal_alignment = 1
 
 [node name="LabelScore" type="Label" parent="."]
 anchors_preset = 5
