@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c11qqxbj740as"]
+[gd_scene load_steps=9 format=3 uid="uid://c11qqxbj740as"]
 
 [ext_resource type="Script" path="res://nextlevel/next_level.gd" id="1_huoms"]
 [ext_resource type="Texture2D" uid="uid://dxurfc1dvo8cv" path="res://nextlevel/portal_disabled.png" id="2_73280"]
 [ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="3_o1nro"]
-[ext_resource type="AudioStream" uid="uid://byfjvq388gr5f" path="res://nextlevel/open.wav" id="4_fj1yi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_golky"]
 size = Vector2(12, 12)
@@ -53,6 +52,3 @@ trail_enabled = true
 
 [node name="SafeZone" parent="." instance=ExtResource("3_o1nro")]
 shape = SubResource("CircleShape2D_0iunv")
-
-[node name="AudioOpen" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_fj1yi")

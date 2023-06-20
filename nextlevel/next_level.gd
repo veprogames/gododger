@@ -4,9 +4,10 @@ extends Area2D
 @onready var level := $"/root/Level" as Level
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var particles := $GPUParticles2D as GPUParticles2D
-@onready var audio_open := $AudioOpen as AudioStreamPlayer
 
 @onready var texture_enabled := preload("res://nextlevel/portal_enabled.png")
+
+@onready var sound_next := preload("res://nextlevel/open.wav")
 
 var active := false
 
@@ -19,6 +20,6 @@ func _ready() -> void:
 
 func activate() -> void:
 	active = true
-	audio_open.play()
+	GlobalSound.play(sound_next)
 	sprite.texture = texture_enabled
 	particles.emitting = true

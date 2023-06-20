@@ -3,7 +3,8 @@ extends Behavior
 
 var Bullet := preload("res://bullet/bullet.tscn")
 @onready var root := $"/root/Level/Objects"
-@onready var audio_player := $AudioShoot as AudioStreamPlayer
+
+@onready var sound_shoot := preload("res://behavior/shoot/shoot.wav")
 
 func shoot(direction: float, speed: float) -> void:
 	var bullet := Bullet.instantiate() as Bullet
@@ -13,4 +14,4 @@ func shoot(direction: float, speed: float) -> void:
 	bullet.position = enemy.position
 
 func play_audio() -> void:
-	audio_player.play()
+	GlobalSound.play(sound_shoot)
