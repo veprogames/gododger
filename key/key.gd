@@ -1,7 +1,7 @@
 class_name KeyCollectible
 extends Area2D
 
-@onready var level := $"/root/Level" as Level
+@export var level: Level
 @onready var safe_zone := $SafeZone as SafeZone
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 

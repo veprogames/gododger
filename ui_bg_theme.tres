@@ -3,6 +3,6 @@
 [ext_resource type="FontFile" uid="uid://dkv7uv7vt3qfp" path="res://fonts/PressStart2P-Regular.ttf" id="1_tg1ey"]
 
 [resource]
-Label/colors/font_color = Color(0.105882, 0.117647, 0.160784, 1)
+Label/colors/font_color = Color(0, 0, 0, 0.509804)
 Label/font_sizes/font_size = 100
 Label/fonts/font = ExtResource("1_tg1ey")

@@ -6,6 +6,7 @@ signal everything_collected()
 signal game_restarted(highscore: int)
 
 @export var level := 0
+@export var level_data: LevelData
 var elapsed := 0.0
 var score_multiplier := 1.0
 var highscore := 0
@@ -26,6 +27,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	elapsed += delta
+
+func get_id() -> String:
+	return level_data.id
 
 func spawn_current_level() -> void:
 	for enemy in container_objects.get_children():
@@ -50,7 +54,7 @@ func _on_enemy_spawner_node_spawned(node) -> void:
 
 func _on_player_died(death_instance: PlayerDeath) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	Global.save_highscore("xtrullor22", get_score())
+	Global.save_highscore(get_id(), get_score())
 	game_restarted.emit(highscore)
 	add_child(death_instance)
 	var tween := create_tween()

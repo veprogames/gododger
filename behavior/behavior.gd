@@ -7,6 +7,8 @@ extends Node
 ## scaling difficulty
 @export var level: int
 
+@export var level_instance: Level
+
 var elapsed := 0.0
 
 func _physics_process(delta: float) -> void:

@@ -2,7 +2,7 @@ class_name ShootBehavior
 extends Behavior
 
 var Bullet := preload("res://bullet/bullet.tscn")
-@onready var root := $"/root/Level/Objects"
+@onready var root := level_instance.find_child("Objects") as Node2D
 
 @onready var sound_shoot := preload("res://behavior/shoot/shoot.wav")
 

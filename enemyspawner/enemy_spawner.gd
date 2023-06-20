@@ -34,6 +34,7 @@ func get_behaviors(enemy: Enemy) -> Array[Behavior]:
 		var shoot := PeriodicShootBehavior.instantiate()
 		result.push_back(shoot)
 	for b in result:
+		b.level_instance = level
 		b.level = level.level
 		b.enemy = enemy
 	return result
@@ -59,11 +60,13 @@ func spawn_enemy():
 func spawn_nextlevel():
 	var nextlevel := nextlevel_scene.instantiate() as NextLevel
 	if nextlevel:
+		nextlevel.level = level
 		nextlevel.position = get_random_position(24)
 		emit_signal("node_spawned", nextlevel)
 
 func spawn_key() -> void:
 	var key := Key.instantiate() as KeyCollectible
+	key.level = level
 	key.position = get_random_position(8)
 	emit_signal("key_spawned", key)
 

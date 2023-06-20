@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://clgq7odsqhqcn"]
+
+[ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_dcdih"]
+[ext_resource type="Script" path="res://level/level_data.gd" id="2_i543k"]
+
+[resource]
+script = ExtResource("2_i543k")
+id = "xtrullor_release"
+title = "Xtrullor - Release"
+scene = ExtResource("1_dcdih")

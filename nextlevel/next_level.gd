@@ -1,7 +1,7 @@
 class_name NextLevel
 extends Area2D
 
-@onready var level := $"/root/Level" as Level
+@export var level: Level
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var particles := $GPUParticles2D as GPUParticles2D
 

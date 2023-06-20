@@ -29,7 +29,7 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 4.0
 scale_max = 4.0
-color = Color(0.156863, 0.156863, 0.227451, 0.501961)
+color = Color(0, 0, 0, 0.392157)
 color_ramp = SubResource("GradientTexture1D_338jt")
 
 [sub_resource type="Environment" id="Environment_pddc8"]

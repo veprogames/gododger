@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwjx3m5id8447"]
+
+[ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_x76vf"]
+[ext_resource type="Resource" uid="uid://clgq7odsqhqcn" path="res://level/levels/xtrullor_release.tres" id="2_vnw1w"]
+[ext_resource type="AudioStream" uid="uid://cfxx4whidgen6" path="res://music/xtrullor_release.ogg" id="3_mb6m1"]
+
+[node name="LevelXtrullorRelease" instance=ExtResource("1_x76vf")]
+level_data = ExtResource("2_vnw1w")
+
+[node name="ColorRect" parent="CanvasLayer" index="0"]
+color = Color(0.152941, 0.227451, 0.227451, 1)
+
+[node name="MusicPlayer" parent="." index="7"]
+stream = ExtResource("3_mb6m1")
