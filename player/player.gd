@@ -2,10 +2,12 @@ class_name Player
 extends Area2D
 
 signal finished()
-signal died()
+signal died(death_instance: PlayerDeath)
 signal key_collected(key: KeyCollectible)
 
 @export var camera: Camera2D
+
+@onready var Death := preload("res://player/player_death.tscn")
 
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var safe_zone := $SafeZone as SafeZone
@@ -57,6 +59,12 @@ func update_sprite(relative: Vector2) -> void:
 		sprite.scale.x = scale_factor
 		sprite.scale.y = 1 / scale_factor
 
+func die() -> void:
+	queue_free()
+	var death := Death.instantiate()
+	death.position = position
+	died.emit(death)
+
 func _input(event: InputEvent) -> void:
 	var mouse_event := event as InputEventMouseMotion
 	var factor := camera.zoom.x
@@ -70,7 +78,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_area_entered(area: Area2D):
 	if area is Enemy or area is Bullet:
-		emit_signal("died")
+		die()
 	if area is KeyCollectible:
 		var key = area as KeyCollectible
 		emit_signal("key_collected", key)

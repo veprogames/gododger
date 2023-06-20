@@ -34,6 +34,7 @@ color_ramp = SubResource("GradientTexture1D_338jt")
 
 [sub_resource type="Environment" id="Environment_pddc8"]
 background_mode = 3
+tonemap_mode = 1
 glow_enabled = true
 glow_levels/3 = 0.0
 glow_levels/5 = 0.0
@@ -100,8 +101,13 @@ environment = NodePath("../WorldEnvironment")
 camera = NodePath("../Camera2D")
 bg_particles = NodePath("../Camera2D/BGParticles")
 
+[node name="TimerRestart" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="finished" from="Player" to="." method="_on_player_finished"]
 [connection signal="key_collected" from="Player" to="." method="_on_player_key_collected"]
 [connection signal="key_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_key_spawned"]
 [connection signal="node_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_node_spawned"]
+[connection signal="timeout" from="TimerRestart" to="." method="_on_timer_restart_timeout"]

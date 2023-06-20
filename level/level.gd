@@ -14,6 +14,7 @@ var highscore := 0
 @onready var music_player := $MusicPlayer as AudioStreamPlayer
 @onready var container_objects := $Objects
 @onready var container_keys := $Keys
+@onready var timer_restart := $TimerRestart as Timer
 
 var keys_left: Array[KeyCollectible] = []
 
@@ -47,15 +48,16 @@ func _on_enemy_spawner_node_spawned(node) -> void:
 	container_objects.add_child.call_deferred(node)
 
 
-func _on_player_died() -> void:
+func _on_player_died(death_instance: PlayerDeath) -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	highscore = max(get_score(), highscore)
-	level = 0
-	elapsed = 0
-	score_multiplier = 1.0
-	keys_left = []
-	emit_signal("level_changed", level)
-	spawn_current_level()
 	game_restarted.emit(highscore)
+	add_child(death_instance)
+	var tween := create_tween()
+	tween.tween_property(music_player, "pitch_scale", 0.01, 1.5) \
+		.set_ease(Tween.EASE_IN_OUT) \
+		.set_trans(Tween.TRANS_CUBIC)
+	timer_restart.start()
 
 func _on_enemy_spawner_key_spawned(key) -> void:
 	container_keys.add_child.call_deferred(key)
@@ -76,3 +78,7 @@ func _input(event: InputEvent) -> void:
 	var ev := event as InputEventKey
 	if ev and ev.pressed and ev.keycode == KEY_ESCAPE:
 		get_tree().quit()
+
+
+func _on_timer_restart_timeout() -> void:
+	get_tree().reload_current_scene()

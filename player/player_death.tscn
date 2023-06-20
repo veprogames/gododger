@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmn1moipccwr8"]
+
+[ext_resource type="Script" path="res://player/player_death.gd" id="1_lk0ou"]
+[ext_resource type="AudioStream" uid="uid://cvw8i0s3vomfd" path="res://player/death.wav" id="2_cofhv"]
+
+[sub_resource type="Gradient" id="Gradient_m2fle"]
+offsets = PackedFloat32Array(0, 0.748148, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_knk3l"]
+gradient = SubResource("Gradient_m2fle")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b35w8"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 50.0
+damping_max = 50.0
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0, 1, 1, 1)
+color_ramp = SubResource("GradientTexture1D_knk3l")
+
+[node name="PlayerDeath" type="GPUParticles2D"]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_b35w8")
+one_shot = true
+explosiveness = 0.71
+script = ExtResource("1_lk0ou")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="AudioDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cofhv")
+autoplay = true
