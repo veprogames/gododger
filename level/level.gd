@@ -50,7 +50,7 @@ func _on_enemy_spawner_node_spawned(node) -> void:
 
 func _on_player_died(death_instance: PlayerDeath) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	highscore = max(get_score(), highscore)
+	Global.save_highscore("xtrullor22", get_score())
 	game_restarted.emit(highscore)
 	add_child(death_instance)
 	var tween := create_tween()
