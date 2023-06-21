@@ -10,7 +10,7 @@ extends CanvasLayer
 func _ready() -> void:
 	update_highscore(Global.get_highscore(level.get_id()))
 	label_level.text = "%02d" % (level.level + 1)
-	label_song.text = "%s\n%s" % [level.level_data.title, label_song.text]
+	label_song.text = "%s\n%s" % [level.level_data.song, label_song.text]
 	level.connect("level_changed", _on_level_changed)
 	
 	var tween := create_tween()

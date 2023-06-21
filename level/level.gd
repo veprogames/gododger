@@ -81,7 +81,7 @@ func get_bpm() -> int:
 func _input(event: InputEvent) -> void:
 	var ev := event as InputEventKey
 	if ev and ev.pressed and ev.keycode == KEY_ESCAPE:
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://mainmenu/main_menu.tscn")
 
 
 func _on_timer_restart_timeout() -> void:
