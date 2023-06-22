@@ -38,4 +38,8 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Play"
 
+[node name="LabelRequirement" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "need: 0"
+
 [connection signal="pressed" from="HBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]

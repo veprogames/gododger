@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("2_i543k")
-requirement = 0
+requirement = 10000
 id = "xtrullor_release"
 title = "Release Update"
 song = "Xtrullor - Release"

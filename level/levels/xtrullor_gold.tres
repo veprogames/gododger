@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b6877rj2o5ns7"]
+
+[ext_resource type="Script" path="res://level/level_data.gd" id="1_adclt"]
+
+[resource]
+script = ExtResource("1_adclt")
+requirement = 40000
+id = "xtrullor_gold"
+title = "The Golden?"
+song = "Xtrullor & Zoflte - Gold"
+scene_path = "res://level/levels/level_xtrullor_gold.tscn"

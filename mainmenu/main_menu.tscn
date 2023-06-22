@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bocgebmg4lvr2"]
+[gd_scene load_steps=6 format=3 uid="uid://bocgebmg4lvr2"]
 
+[ext_resource type="Script" path="res://mainmenu/main_menu.gd" id="1_lum3s"]
 [ext_resource type="PackedScene" uid="uid://0fqtkl81e2hk" path="res://ui/ui_level.tscn" id="1_ocp4w"]
 [ext_resource type="Resource" uid="uid://csemitroqxfkg" path="res://level/levels/xtrullor22.tres" id="2_i2o40"]
 [ext_resource type="Resource" uid="uid://clgq7odsqhqcn" path="res://level/levels/xtrullor_release.tres" id="3_hkq5w"]
+[ext_resource type="Resource" uid="uid://b6877rj2o5ns7" path="res://level/levels/xtrullor_gold.tres" id="5_h2kj8"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_lum3s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -17,6 +20,19 @@ offset_right = 128.0
 offset_bottom = 35.0
 grow_horizontal = 2
 text = "Gododger"
+
+[node name="LabelTotalScore" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -35.0
+offset_right = 128.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "TotalScore: 0"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -38,3 +54,7 @@ data = ExtResource("2_i2o40")
 [node name="UILevel2" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_ocp4w")]
 layout_mode = 2
 data = ExtResource("3_hkq5w")
+
+[node name="UILevel3" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_ocp4w")]
+layout_mode = 2
+data = ExtResource("5_h2kj8")

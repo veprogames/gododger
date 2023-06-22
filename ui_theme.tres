@@ -3,5 +3,5 @@
 [ext_resource type="FontFile" uid="uid://dkv7uv7vt3qfp" path="res://fonts/PressStart2P-Regular.ttf" id="1_u40xv"]
 
 [resource]
-Label/font_sizes/font_size = 32
+Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_u40xv")
