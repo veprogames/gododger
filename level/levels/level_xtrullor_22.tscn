@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg8t2aajmoqdv"]
+[gd_scene load_steps=6 format=3 uid="uid://dg8t2aajmoqdv"]
 
 [ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_pdwaf"]
 [ext_resource type="Resource" uid="uid://csemitroqxfkg" path="res://level/levels/xtrullor22.tres" id="2_w77iy"]
+[ext_resource type="PackedScene" uid="uid://6ofo34fitnot" path="res://behavior/move/periodic_move_behavior.tscn" id="3_qavw6"]
+[ext_resource type="Texture2D" uid="uid://dphmtnwibd6lu" path="res://player/player.png" id="3_wg43t"]
+[ext_resource type="PackedScene" uid="uid://bopfny4t8y4h4" path="res://behavior/shoot/periodic_shoot_behavior.tscn" id="4_5kt35"]
 
 [node name="LevelXtrullor22" instance=ExtResource("1_pdwaf")]
+difficulty_multiplier = 0.5
 level_data = ExtResource("2_w77iy")
+
+[node name="EnemySpawner" parent="." index="2"]
+enemy_sprite = ExtResource("3_wg43t")
+move_behaviors = Array[PackedScene]([ExtResource("3_qavw6")])
+shoot_behaviors = Array[PackedScene]([ExtResource("4_5kt35")])

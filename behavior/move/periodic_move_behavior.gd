@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func get_amplitude() -> Vector2:
 	var mult := 1.0 + 0.05 * clampf(level, 0, 50)
+	mult *= level_instance.difficulty_multiplier ** 0.5
 	return 50 * mult * Vector2(
 		randf_range(-1, 1),
 		randf_range(-1, 1)

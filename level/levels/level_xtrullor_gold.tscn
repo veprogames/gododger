@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://wo1xqkjhaf2q" path="res://music/xtrullor_gold.ogg" id="3_ain4o"]
 
 [node name="LevelXtrullorGold" instance=ExtResource("1_w1vct")]
+difficulty_multiplier = 2.0
 level_data = ExtResource("2_27ap5")
 
 [node name="ColorRect" parent="CanvasLayer" index="0"]

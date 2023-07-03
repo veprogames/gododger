@@ -6,6 +6,7 @@ signal everything_collected()
 signal game_restarted(highscore: int)
 
 @export var level := 0
+@export var difficulty_multiplier := 1.0
 @export var level_data: LevelData
 var elapsed := 0.0
 var score_multiplier := 1.0
@@ -40,7 +41,8 @@ func spawn_current_level() -> void:
 
 func get_score() -> int:
 	var time_per_level := elapsed / (level + 1)
-	return int(10 * level ** 2 / time_per_level * score_multiplier)
+	var difficulty_modifier := difficulty_multiplier ** 1.5
+	return int(10 * level ** 1.2 / time_per_level * score_multiplier * difficulty_modifier)
 
 func _on_player_finished() -> void:
 	level += 1
