@@ -42,7 +42,7 @@ func spawn_current_level() -> void:
 func get_score() -> int:
 	var time_per_level := elapsed / (level + 1)
 	var difficulty_modifier := difficulty_multiplier ** 1.5
-	return int(10 * level ** 1.2 / time_per_level * score_multiplier * difficulty_modifier)
+	return int(10 * level ** 1.15 / time_per_level * score_multiplier * difficulty_modifier)
 
 func _on_player_finished() -> void:
 	level += 1

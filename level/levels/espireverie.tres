@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bbgwqe18xgjta"]
+
+[ext_resource type="Script" path="res://level/level_data.gd" id="1_agiwn"]
+
+[resource]
+script = ExtResource("1_agiwn")
+requirement = 0
+id = "espireverie"
+title = "Flower Garden"
+song = "EspiDev - Reverie"
+scene_path = "res://level/levels/level_espi_reverie.tscn"

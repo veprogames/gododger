@@ -27,8 +27,6 @@ initial_velocity_min = 10.0
 initial_velocity_max = 20.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 4.0
-scale_max = 4.0
 color = Color(0, 0, 0, 0.392157)
 color_ramp = SubResource("GradientTexture1D_338jt")
 
@@ -73,12 +71,19 @@ level = NodePath("..")
 layer = -10
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2, 0.203922, 0.286275, 1)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(6, 6)
 metadata/_edit_lock_ = true
 
 [node name="Objects" type="Node2D" parent="."]

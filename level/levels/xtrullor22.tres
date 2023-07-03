@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ngyne")
-requirement = 0
+requirement = 300
 id = "xtrullor22"
 title = "Twosday"
 song = "Xtrullor - 22"

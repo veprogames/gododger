@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bocgebmg4lvr2"]
+[gd_scene load_steps=7 format=3 uid="uid://bocgebmg4lvr2"]
 
 [ext_resource type="Script" path="res://mainmenu/main_menu.gd" id="1_lum3s"]
 [ext_resource type="PackedScene" uid="uid://0fqtkl81e2hk" path="res://ui/ui_level.tscn" id="1_ocp4w"]
 [ext_resource type="Resource" uid="uid://csemitroqxfkg" path="res://level/levels/xtrullor22.tres" id="2_i2o40"]
 [ext_resource type="Resource" uid="uid://clgq7odsqhqcn" path="res://level/levels/xtrullor_release.tres" id="3_hkq5w"]
+[ext_resource type="Resource" uid="uid://bbgwqe18xgjta" path="res://level/levels/espireverie.tres" id="3_psaed"]
 [ext_resource type="Resource" uid="uid://b6877rj2o5ns7" path="res://level/levels/xtrullor_gold.tres" id="5_h2kj8"]
 
 [node name="MainMenu" type="Node2D"]
@@ -46,6 +47,10 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="UILevel4" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_ocp4w")]
+layout_mode = 2
+data = ExtResource("3_psaed")
 
 [node name="UILevel" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_ocp4w")]
 layout_mode = 2
