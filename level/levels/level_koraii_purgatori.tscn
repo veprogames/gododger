@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx4vt0e1hhf0q"]
+
+[ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_gtrkg"]
+[ext_resource type="Resource" uid="uid://0ptlj6o6sxfk" path="res://level/levels/koraii_purgatori.tres" id="2_e1j1e"]
+[ext_resource type="PackedScene" uid="uid://6ofo34fitnot" path="res://behavior/move/periodic_move_behavior.tscn" id="3_101v4"]
+[ext_resource type="AudioStream" uid="uid://brnydsvekbsrc" path="res://music/koraii_purgatori.ogg" id="3_vfkun"]
+[ext_resource type="PackedScene" uid="uid://bopfny4t8y4h4" path="res://behavior/shoot/periodic_shoot_behavior.tscn" id="4_jxkge"]
+
+[node name="LevelKoraiiPurgatori" instance=ExtResource("1_gtrkg")]
+level_data = ExtResource("2_e1j1e")
+difficulty_multiplier = 2.5
+
+[node name="EnemySpawner" parent="." index="2"]
+move_behaviors = Array[PackedScene]([ExtResource("3_101v4")])
+shoot_behaviors = Array[PackedScene]([ExtResource("4_jxkge")])
+
+[node name="MusicPlayer" parent="." index="7"]
+stream = ExtResource("3_vfkun")
+
+[node name="MusicSyncer" parent="." index="9"]
+glow_strength = 1.2
+shake_strength = 2.0

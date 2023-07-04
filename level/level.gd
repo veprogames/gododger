@@ -6,17 +6,20 @@ signal everything_collected()
 signal game_restarted(highscore: int)
 
 @export var level := 0
-@export var difficulty_multiplier := 1.0
 @export var level_data: LevelData
 var elapsed := 0.0
 var score_multiplier := 1.0
 var highscore := 0
+
+@export_category("Level Configuration")
+@export var difficulty_multiplier := 1.0
 
 @onready var spawner := $EnemySpawner as EnemySpawner
 @onready var music_player := $MusicPlayer as AudioStreamPlayer
 @onready var container_objects := $Objects
 @onready var container_keys := $Keys
 @onready var timer_restart := $TimerRestart as Timer
+@onready var level_background := $CanvasLayer/LevelBackground as TextureRect
 
 var keys_left: Array[KeyCollectible] = []
 
@@ -24,6 +27,7 @@ var keys_left: Array[KeyCollectible] = []
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	spawner.spawn_level(level)
+	level_background.texture = level_data.background
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

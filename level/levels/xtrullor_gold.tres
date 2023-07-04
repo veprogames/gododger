@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b6877rj2o5ns7"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://b6877rj2o5ns7"]
 
 [ext_resource type="Script" path="res://level/level_data.gd" id="1_adclt"]
+[ext_resource type="Texture2D" uid="uid://du8o850pievad" path="res://level/levels/gold.png" id="1_daqq7"]
 
 [resource]
 script = ExtResource("1_adclt")
-requirement = 40000
+requirement = 999
 id = "xtrullor_gold"
 title = "The Golden?"
 song = "Xtrullor & Zoflte - Gold"
+background = ExtResource("1_daqq7")
 scene_path = "res://level/levels/level_xtrullor_gold.tscn"

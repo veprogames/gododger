@@ -6,6 +6,7 @@ extends Resource
 @export var id: String
 @export var title: String
 @export var song: String
+@export var background: Texture2D
 @export_file("*.tscn") var scene_path: String
 
 func is_unlocked() -> bool:

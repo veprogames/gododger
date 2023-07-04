@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://cunpc84se8g22"]
+
+[ext_resource type="Texture2D" uid="uid://dxxowl7hnb16d" path="res://level/levels/cysmixsonata.png" id="1_l4ufu"]
+[ext_resource type="Script" path="res://level/level_data.gd" id="2_5yepo"]
+
+[resource]
+script = ExtResource("2_5yepo")
+requirement = 600
+id = "cysmixsonata"
+title = "NIGHTFALL"
+song = "cYsmix - Moonlight Sonata"
+background = ExtResource("1_l4ufu")
+scene_path = "res://level/levels/level_cysmix_sonata.tscn"

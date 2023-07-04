@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://0ptlj6o6sxfk"]
+
+[ext_resource type="Texture2D" uid="uid://c24lpyrhxx5rg" path="res://level/levels/purgatori.png" id="1_oaste"]
+[ext_resource type="Script" path="res://level/level_data.gd" id="2_pc8qe"]
+
+[resource]
+script = ExtResource("2_pc8qe")
+requirement = 2000
+id = "koraii_purgatori"
+title = "sinister death"
+song = "KORAII - Purgatori"
+background = ExtResource("1_oaste")
+scene_path = "res://level/levels/level_koraii_purgatori.tscn"
