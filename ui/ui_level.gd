@@ -2,15 +2,26 @@ extends Control
 
 @export var data: LevelData
 
-@onready var label_title := $HBoxContainer/LabelTitle as Label
-@onready var label_requirement := $HBoxContainer/LabelRequirement as Label
-@onready var button_play := $HBoxContainer/ButtonPlay as Button
+@onready var container_unlocked := $Unlocked as HBoxContainer
+@onready var container_locked := $Locked as HBoxContainer
+
+@onready var label_title := $Unlocked/Control/LabelTitle as Label
+@onready var label_song := $Unlocked/Control/LabelSong as Label
+@onready var label_requirement := $Locked/Control/LabelRequirement as Label
+@onready var image_level := $Unlocked/Container/PreviewClip/LevelImage as TextureRect
+@onready var button_play := $Unlocked/Control/ButtonPlay as Button
 
 func _ready() -> void:
-	label_title.text = "%s\n%s" % [data.title, data.song]
+	label_title.text = data.title
+	label_song.text = data.song
 	label_requirement.text = "need: %d" % data.requirement
-	button_play.visible = data.is_unlocked()
 	label_requirement.visible = !button_play.visible
+	image_level.texture = data.background
+	
+	if data.is_unlocked():
+		container_locked.queue_free()
+	else:
+		container_unlocked.queue_free()
 
 func play() -> void:
 	if data.is_unlocked():

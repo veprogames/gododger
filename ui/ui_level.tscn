@@ -1,45 +1,115 @@
-[gd_scene load_steps=2 format=3 uid="uid://0fqtkl81e2hk"]
+[gd_scene load_steps=7 format=3 uid="uid://0fqtkl81e2hk"]
 
+[ext_resource type="Theme" uid="uid://dpvtn5h8ykqux" path="res://ui_theme.tres" id="1_1rgqy"]
 [ext_resource type="Script" path="res://ui/ui_level.gd" id="1_cq7i3"]
+[ext_resource type="Texture2D" uid="uid://dlrguluhm2t6l" path="res://ui/levelpreview.png" id="2_ycv8f"]
+[ext_resource type="Texture2D" uid="uid://d13xsp843lc0h" path="res://ui/levelpreview_clip.png" id="3_l4a8p"]
+[ext_resource type="Texture2D" uid="uid://dxxowl7hnb16d" path="res://level/levels/cysmixsonata.png" id="4_d32j6"]
+[ext_resource type="Texture2D" uid="uid://bhrv3lcyvwqt2" path="res://ui/locked.png" id="5_supih"]
 
 [node name="UILevel" type="Control"]
 clip_contents = true
-custom_minimum_size = Vector2(800, 200)
+custom_minimum_size = Vector2(640, 192)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 400.0
-offset_bottom = 200.0
+offset_right = 500.0
+offset_bottom = 192.0
+theme = ExtResource("1_1rgqy")
 script = ExtResource("1_cq7i3")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.392157)
+[node name="Unlocked" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Container" type="Control" parent="Unlocked"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewOuter" type="TextureRect" parent="Unlocked/Container"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(6, 6)
+texture = ExtResource("2_ycv8f")
+
+[node name="PreviewClip" type="TextureRect" parent="Unlocked/Container"]
+clip_children = 1
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(6, 6)
+texture = ExtResource("3_l4a8p")
+
+[node name="LevelImage" type="TextureRect" parent="Unlocked/Container/PreviewClip"]
+layout_mode = 0
+offset_left = -15.75
+offset_right = 304.25
+offset_bottom = 180.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_d32j6")
+
+[node name="Control" type="VBoxContainer" parent="Unlocked"]
+layout_mode = 2
+size_flags_horizontal = 0
 alignment = 1
 
-[node name="LabelTitle" type="Label" parent="HBoxContainer"]
+[node name="LabelTitle" type="Label" parent="Unlocked/Control"]
 layout_mode = 2
 text = "title"
 
-[node name="ButtonPlay" type="Button" parent="HBoxContainer"]
+[node name="LabelSong" type="Label" parent="Unlocked/Control"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "song"
+
+[node name="ButtonPlay" type="Button" parent="Unlocked/Control"]
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Play"
 
-[node name="LabelRequirement" type="Label" parent="HBoxContainer"]
+[node name="Locked" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Container" type="Control" parent="Locked"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewOuter" type="TextureRect" parent="Locked/Container"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(6, 6)
+texture = ExtResource("2_ycv8f")
+
+[node name="PreviewClip" type="TextureRect" parent="Locked/Container"]
+clip_children = 1
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(6, 6)
+texture = ExtResource("3_l4a8p")
+
+[node name="LevelImage" type="TextureRect" parent="Locked/Container/PreviewClip"]
+layout_mode = 0
+offset_left = -15.75
+offset_right = 304.25
+offset_bottom = 180.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_supih")
+
+[node name="Control" type="VBoxContainer" parent="Locked"]
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="LabelRequirement" type="Label" parent="Locked/Control"]
 layout_mode = 2
 text = "need: 0"
 
-[connection signal="pressed" from="HBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="Unlocked/Control/ButtonPlay" to="." method="_on_button_play_pressed"]
