@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var label_totalscore := $CanvasLayer/LabelTotalScore as Label
+@onready var label_totalscore := $CanvasLayer/HBoxContainer/LabelTotalScore as Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	var key_event := event as InputEventKey
-	if key_event and key_event.keycode == KEY_ESCAPE:
+	if key_event and key_event.keycode == KEY_ESCAPE and key_event.pressed:
 		get_tree().quit()
 
 func _on_button_quit_pressed() -> void:

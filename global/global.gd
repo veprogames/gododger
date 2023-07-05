@@ -27,6 +27,11 @@ func get_highscore(id: String) -> int:
 		return highscores[id].get("score", 0)
 	return 0
 
+func get_highscore_level(id: String) -> int:
+	if id in highscores:
+		return highscores[id].get("level", 0)
+	return 0
+
 func get_total_score() -> int:
 	var sum := 0
 	for k in highscores:

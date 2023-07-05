@@ -10,6 +10,8 @@ extends Control
 @onready var label_requirement := $Locked/Control/LabelRequirement as Label
 @onready var image_level := $Unlocked/Container/PreviewClip/LevelImage as TextureRect
 @onready var button_play := $Unlocked/Control/ButtonPlay as Button
+@onready var particles_level20 := $GPUParticlesLevel20 as GPUParticles2D
+@onready var particles_level40 := $GPUParticlesLevel40 as GPUParticles2D
 
 func _ready() -> void:
 	label_title.text = data.title
@@ -18,6 +20,12 @@ func _ready() -> void:
 	label_requirement.visible = !button_play.visible
 	image_level.texture = data.background
 	
+	var highscore_level := Global.get_highscore_level(data.id)
+	if highscore_level < 20:
+		particles_level20.queue_free()
+	if highscore_level < 40:
+		particles_level40.queue_free()
+
 	if data.is_unlocked():
 		container_locked.queue_free()
 	else:

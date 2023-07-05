@@ -1,6 +1,23 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dpvtn5h8ykqux"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dpvtn5h8ykqux"]
 
 [ext_resource type="FontFile" uid="uid://dkv7uv7vt3qfp" path="res://fonts/PressStart2P-Regular.ttf" id="1_u40xv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tne4t"]
+bg_color = Color(0.317647, 0.580392, 0.494118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck78s"]
 bg_color = Color(0.211765, 0.415686, 0.34902, 1)
@@ -13,11 +30,34 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3acro"]
+bg_color = Color(0.4, 0.694118, 0.596078, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 anti_aliasing = false
 
 [resource]
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("1_u40xv")
+Button/styles/hover = SubResource("StyleBoxFlat_tne4t")
 Button/styles/normal = SubResource("StyleBoxFlat_ck78s")
+Button/styles/pressed = SubResource("StyleBoxFlat_3acro")
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_u40xv")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://0fqtkl81e2hk"]
+[gd_scene load_steps=13 format=3 uid="uid://0fqtkl81e2hk"]
 
 [ext_resource type="Theme" uid="uid://dpvtn5h8ykqux" path="res://ui_theme.tres" id="1_1rgqy"]
 [ext_resource type="Script" path="res://ui/ui_level.gd" id="1_cq7i3"]
@@ -6,9 +6,55 @@
 [ext_resource type="Texture2D" uid="uid://d13xsp843lc0h" path="res://ui/levelpreview_clip.png" id="3_l4a8p"]
 [ext_resource type="Texture2D" uid="uid://dxxowl7hnb16d" path="res://level/levels/cysmixsonata.png" id="4_d32j6"]
 [ext_resource type="Texture2D" uid="uid://bhrv3lcyvwqt2" path="res://ui/locked.png" id="5_supih"]
+[ext_resource type="Texture2D" uid="uid://dmxa3grkjcr41" path="res://level/particles/smoke.png" id="7_eggd3"]
+[ext_resource type="Texture2D" uid="uid://c32nv3l71twvm" path="res://level/particles/galaxy.png" id="8_xtdpd"]
+
+[sub_resource type="Gradient" id="Gradient_u4v37"]
+offsets = PackedFloat32Array(0, 0.237037, 0.837037, 0.977778)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mw56r"]
+gradient = SubResource("Gradient_u4v37")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhifa"]
+emission_shape = 1
+emission_sphere_radius = 64.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+angular_velocity_min = 5.0
+angular_velocity_max = 5.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.2
+scale_min = 3.0
+scale_max = 3.0
+color = Color(1, 1, 0, 0.278431)
+color_ramp = SubResource("GradientTexture1D_mw56r")
+hue_variation_max = 0.35
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v17aj"]
+emission_shape = 1
+emission_sphere_radius = 64.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+angular_velocity_min = 5.0
+angular_velocity_max = 5.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.2
+scale_min = 12.0
+scale_max = 12.0
+color = Color(1, 0.14902, 0, 0.278431)
+color_ramp = SubResource("GradientTexture1D_mw56r")
+hue_variation_max = 0.35
 
 [node name="UILevel" type="Control"]
-clip_contents = true
 custom_minimum_size = Vector2(640, 192)
 layout_mode = 3
 anchors_preset = 0
@@ -111,5 +157,25 @@ alignment = 1
 [node name="LabelRequirement" type="Label" parent="Locked/Control"]
 layout_mode = 2
 text = "need: 0"
+
+[node name="GPUParticlesLevel20" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(97, 98)
+amount = 48
+process_material = SubResource("ParticleProcessMaterial_qhifa")
+texture = ExtResource("7_eggd3")
+lifetime = 1.5
+preprocess = 2.0
+fixed_fps = 60
+
+[node name="GPUParticlesLevel40" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(97, 98)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_v17aj")
+texture = ExtResource("8_xtdpd")
+lifetime = 1.5
+preprocess = 2.0
+fixed_fps = 60
 
 [connection signal="pressed" from="Unlocked/Control/ButtonPlay" to="." method="_on_button_play_pressed"]

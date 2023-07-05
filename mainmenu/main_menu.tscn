@@ -1,43 +1,74 @@
-[gd_scene load_steps=8 format=3 uid="uid://bocgebmg4lvr2"]
+[gd_scene load_steps=11 format=3 uid="uid://bocgebmg4lvr2"]
 
 [ext_resource type="Script" path="res://mainmenu/main_menu.gd" id="1_lum3s"]
 [ext_resource type="PackedScene" uid="uid://0fqtkl81e2hk" path="res://ui/ui_level.tscn" id="1_ocp4w"]
 [ext_resource type="Resource" uid="uid://csemitroqxfkg" path="res://level/levels/xtrullor22.tres" id="2_i2o40"]
+[ext_resource type="Texture2D" uid="uid://ch1ohqla1qqi8" path="res://ui/highscore_all.png" id="2_qrsys"]
 [ext_resource type="Resource" uid="uid://bbgwqe18xgjta" path="res://level/levels/espireverie.tres" id="3_psaed"]
 [ext_resource type="Resource" uid="uid://cunpc84se8g22" path="res://level/levels/cysmixsonata.tres" id="5_exgch"]
 [ext_resource type="Resource" uid="uid://b6877rj2o5ns7" path="res://level/levels/xtrullor_gold.tres" id="5_h2kj8"]
 [ext_resource type="Resource" uid="uid://0ptlj6o6sxfk" path="res://level/levels/koraii_purgatori.tres" id="7_s6j14"]
+[ext_resource type="Texture2D" uid="uid://cxaghfnp8hqbc" path="res://mainmenu/background.png" id="8_ncnv8"]
+[ext_resource type="AudioStream" uid="uid://cke6gx0wrdwgr" path="res://music/colbreakz_10000.ogg" id="10_gy7ud"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_lum3s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="LabelTitle" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -128.0
-offset_right = 128.0
-offset_bottom = 35.0
+offset_left = -384.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 107.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 96
 text = "Gododger"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LabelTotalScore" type="Label" parent="CanvasLayer"]
+[node name="LabelSong" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -356.0
+offset_top = -62.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Main Menu Song
+ColBreakz - 10000"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -35.0
-offset_right = 128.0
+offset_left = -50.5
+offset_top = -56.0
+offset_right = 50.5
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "TotalScore: 0"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_qrsys")
+expand_mode = 3
+
+[node name="LabelTotalScore" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
 
 [node name="VBoxContainer" type="GridContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -79,5 +110,16 @@ offset_top = 8.0
 offset_right = 108.0
 offset_bottom = 36.0
 text = "Quit"
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+z_index = -10
+offset_right = 1920.0
+offset_bottom = 1081.0
+mouse_filter = 2
+texture = ExtResource("8_ncnv8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gy7ud")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
