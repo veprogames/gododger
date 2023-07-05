@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bocgebmg4lvr2"]
+[gd_scene load_steps=12 format=3 uid="uid://bocgebmg4lvr2"]
 
 [ext_resource type="Script" path="res://mainmenu/main_menu.gd" id="1_lum3s"]
 [ext_resource type="PackedScene" uid="uid://0fqtkl81e2hk" path="res://ui/ui_level.tscn" id="1_ocp4w"]
+[ext_resource type="Texture2D" uid="uid://b6mkc4u2l3ock" path="res://mainmenu/author.png" id="2_b6ahp"]
 [ext_resource type="Resource" uid="uid://csemitroqxfkg" path="res://level/levels/xtrullor22.tres" id="2_i2o40"]
 [ext_resource type="Texture2D" uid="uid://ch1ohqla1qqi8" path="res://ui/highscore_all.png" id="2_qrsys"]
 [ext_resource type="Resource" uid="uid://bbgwqe18xgjta" path="res://level/levels/espireverie.tres" id="3_psaed"]
@@ -30,7 +31,18 @@ text = "Gododger"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LabelSong" type="Label" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 200.0
+offset_top = 108.0
+offset_right = 456.0
+offset_bottom = 172.0
+grow_horizontal = 2
+texture = ExtResource("2_b6ahp")
+
+[node name="LabelCredits" type="Label" parent="CanvasLayer"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -43,7 +55,9 @@ offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Main Menu Song
-ColBreakz - 10000"
+ColBreakz - 10000
+Font
+Press Start 2P"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -117,6 +131,7 @@ offset_right = 1920.0
 offset_bottom = 1081.0
 mouse_filter = 2
 texture = ExtResource("8_ncnv8")
+metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_gy7ud")
