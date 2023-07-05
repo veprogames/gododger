@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b4qsplrduk1l8" path="res://safezone/safe_zone.tscn" id="3_ggu7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w44b"]
-size = Vector2(4, 4)
+size = Vector2(2, 2)
 
 [sub_resource type="Gradient" id="Gradient_bqu5e"]
 offsets = PackedFloat32Array(0, 0.207921, 0.742574, 1)

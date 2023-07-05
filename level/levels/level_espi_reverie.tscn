@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxjjvvec3c20f"]
+[gd_scene load_steps=11 format=3 uid="uid://bxjjvvec3c20f"]
 
 [ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_y81cq"]
 [ext_resource type="Resource" uid="uid://bbgwqe18xgjta" path="res://level/levels/espireverie.tres" id="2_rh7pw"]
 [ext_resource type="PackedScene" uid="uid://6ofo34fitnot" path="res://behavior/move/periodic_move_behavior.tscn" id="3_2hnai"]
 [ext_resource type="Texture2D" uid="uid://dloqf4b4fm0pr" path="res://level/particles/raindrop.png" id="3_i7r8p"]
 [ext_resource type="Texture2D" uid="uid://5j6ju7p3mwng" path="res://enemy/green.png" id="3_qo460"]
-[ext_resource type="Texture2D" uid="uid://dnbgm0us2nyti" path="res://level/levels/espireverie.png" id="3_uki7y"]
 [ext_resource type="AudioStream" uid="uid://chu7yjc5uesww" path="res://music/espidev_reverie.ogg" id="4_hwney"]
 [ext_resource type="PackedScene" uid="uid://bopfny4t8y4h4" path="res://behavior/shoot/periodic_shoot_behavior.tscn" id="4_vg5jn"]
 
@@ -44,9 +43,6 @@ texture = ExtResource("3_i7r8p")
 enemy_sprite = ExtResource("3_qo460")
 move_behaviors = Array[PackedScene]([ExtResource("3_2hnai")])
 shoot_behaviors = Array[PackedScene]([ExtResource("4_vg5jn")])
-
-[node name="TextureRect" parent="CanvasLayer" index="1"]
-texture = ExtResource("3_uki7y")
 
 [node name="MusicPlayer" parent="." index="7"]
 stream = ExtResource("4_hwney")

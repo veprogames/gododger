@@ -59,6 +59,7 @@ amount = 400
 process_material = SubResource("ParticleProcessMaterial_40tj0")
 lifetime = 3.0
 preprocess = 5.0
+fixed_fps = 60
 visibility_rect = Rect2(-300.771, -235.378, 601.332, 434.998)
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player", "level") instance=ExtResource("3_aovol")]

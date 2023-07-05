@@ -7,8 +7,5 @@
 [node name="LevelXtrullorRelease" instance=ExtResource("1_x76vf")]
 level_data = ExtResource("2_vnw1w")
 
-[node name="ColorRect" parent="CanvasLayer" index="0"]
-color = Color(0.152941, 0.227451, 0.227451, 1)
-
 [node name="MusicPlayer" parent="." index="7"]
 stream = ExtResource("3_mb6m1")

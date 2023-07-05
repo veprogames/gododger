@@ -1,16 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp2chwtk1rf51"]
+[gd_scene load_steps=11 format=3 uid="uid://cp2chwtk1rf51"]
 
 [ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_w1vct"]
 [ext_resource type="Resource" uid="uid://b6877rj2o5ns7" path="res://level/levels/xtrullor_gold.tres" id="2_27ap5"]
+[ext_resource type="Texture2D" uid="uid://cvfuwccjban5" path="res://enemy/gold.png" id="3_4l70v"]
 [ext_resource type="PackedScene" uid="uid://6ofo34fitnot" path="res://behavior/move/periodic_move_behavior.tscn" id="3_8k575"]
+[ext_resource type="Texture2D" uid="uid://ck6bn54q47784" path="res://level/particles/sparkle.png" id="3_63854"]
 [ext_resource type="AudioStream" uid="uid://wo1xqkjhaf2q" path="res://music/xtrullor_gold.ogg" id="3_ain4o"]
 [ext_resource type="PackedScene" uid="uid://bopfny4t8y4h4" path="res://behavior/shoot/periodic_shoot_behavior.tscn" id="4_d1lck"]
+
+[sub_resource type="Gradient" id="Gradient_hlobh"]
+offsets = PackedFloat32Array(0.0222222, 0.281481, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_338jt"]
+gradient = SubResource("Gradient_hlobh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mxhod"]
+emission_shape = 3
+emission_box_extents = Vector3(300, 200, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_min = 20.0
+radial_accel_max = 20.0
+color = Color(1, 1, 1, 0.392157)
+color_ramp = SubResource("GradientTexture1D_338jt")
 
 [node name="LevelXtrullorGold" instance=ExtResource("1_w1vct")]
 level_data = ExtResource("2_27ap5")
 difficulty_multiplier = 1.5
 
+[node name="BGParticles" parent="Camera2D" index="0"]
+process_material = SubResource("ParticleProcessMaterial_mxhod")
+texture = ExtResource("3_63854")
+
 [node name="EnemySpawner" parent="." index="2"]
+enemy_sprite = ExtResource("3_4l70v")
 move_behaviors = Array[PackedScene]([ExtResource("3_8k575")])
 shoot_behaviors = Array[PackedScene]([ExtResource("4_d1lck")])
 

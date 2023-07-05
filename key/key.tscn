@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cyeayr4oje1v7" path="res://key/collect.wav" id="4_5rchi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxudv"]
-size = Vector2(12, 6)
+size = Vector2(18, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g82kg"]
 radius = 8.0

@@ -1,15 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3j5xrdxletjv"]
+[gd_scene load_steps=11 format=3 uid="uid://d3j5xrdxletjv"]
 
 [ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_gopiq"]
 [ext_resource type="Resource" uid="uid://cunpc84se8g22" path="res://level/levels/cysmixsonata.tres" id="2_xpn6h"]
+[ext_resource type="Texture2D" uid="uid://c32nv3l71twvm" path="res://level/particles/galaxy.png" id="3_6xf7d"]
 [ext_resource type="AudioStream" uid="uid://clxyttubf1ky" path="res://music/cysmix_moonlight_sonata.ogg" id="3_ld8kv"]
+[ext_resource type="Texture2D" uid="uid://333yceifxftw" path="res://enemy/moon.png" id="3_otm0x"]
 [ext_resource type="PackedScene" uid="uid://6ofo34fitnot" path="res://behavior/move/periodic_move_behavior.tscn" id="3_wibwh"]
 [ext_resource type="PackedScene" uid="uid://bopfny4t8y4h4" path="res://behavior/shoot/periodic_shoot_behavior.tscn" id="4_arxxh"]
+
+[sub_resource type="Gradient" id="Gradient_hlobh"]
+offsets = PackedFloat32Array(0.0222222, 0.281481, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_338jt"]
+gradient = SubResource("Gradient_hlobh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0kggw"]
+emission_shape = 3
+emission_box_extents = Vector3(300, 200, 1)
+particle_flag_disable_z = true
+direction = Vector3(1, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.04
+color = Color(1, 1, 1, 0.196078)
+color_ramp = SubResource("GradientTexture1D_338jt")
 
 [node name="LevelCysmixSonata" instance=ExtResource("1_gopiq")]
 level_data = ExtResource("2_xpn6h")
 
+[node name="BGParticles" parent="Camera2D" index="0"]
+process_material = SubResource("ParticleProcessMaterial_0kggw")
+texture = ExtResource("3_6xf7d")
+
 [node name="EnemySpawner" parent="." index="2"]
+enemy_sprite = ExtResource("3_otm0x")
 move_behaviors = Array[PackedScene]([ExtResource("3_wibwh")])
 shoot_behaviors = Array[PackedScene]([ExtResource("4_arxxh")])
 
