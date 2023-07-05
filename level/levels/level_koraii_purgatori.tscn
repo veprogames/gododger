@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx4vt0e1hhf0q"]
+[gd_scene load_steps=12 format=3 uid="uid://cx4vt0e1hhf0q"]
 
 [ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_gtrkg"]
 [ext_resource type="Resource" uid="uid://0ptlj6o6sxfk" path="res://level/levels/koraii_purgatori.tres" id="2_e1j1e"]
-[ext_resource type="PackedScene" uid="uid://6ofo34fitnot" path="res://behavior/move/periodic_move_behavior.tscn" id="3_101v4"]
 [ext_resource type="AudioStream" uid="uid://brnydsvekbsrc" path="res://music/koraii_purgatori.ogg" id="3_vfkun"]
 [ext_resource type="Texture2D" uid="uid://b7hmxs0esmjb1" path="res://enemy/demon.png" id="3_x32rd"]
 [ext_resource type="Texture2D" uid="uid://dmxa3grkjcr41" path="res://level/particles/smoke.png" id="3_ynb70"]
 [ext_resource type="PackedScene" uid="uid://bopfny4t8y4h4" path="res://behavior/shoot/periodic_shoot_behavior.tscn" id="4_jxkge"]
+[ext_resource type="PackedScene" uid="uid://bkfa0q7bs0wrf" path="res://behavior/move/player_follow_move_behavior.tscn" id="5_der3l"]
+[ext_resource type="PackedScene" uid="uid://bjulxxlb82h12" path="res://behavior/move/noise_move_behavior.tscn" id="5_nspkk"]
 
 [sub_resource type="Gradient" id="Gradient_hlobh"]
 offsets = PackedFloat32Array(0.0222222, 0.281481, 1)
@@ -44,7 +45,7 @@ lifetime = 5.0
 
 [node name="EnemySpawner" parent="." index="2"]
 enemy_sprite = ExtResource("3_x32rd")
-move_behaviors = Array[PackedScene]([ExtResource("3_101v4")])
+move_behaviors = Array[PackedScene]([ExtResource("5_der3l"), ExtResource("5_nspkk")])
 shoot_behaviors = Array[PackedScene]([ExtResource("4_jxkge")])
 
 [node name="MusicPlayer" parent="." index="7"]

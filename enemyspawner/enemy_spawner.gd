@@ -60,6 +60,7 @@ func get_behaviors(enemy: Enemy) -> Array[Behavior]:
 			result.push_back(shoot)
 	for b in result:
 		b.level_instance = level
+		b.player_instance = player
 		b.level = level.level
 		b.enemy = enemy
 	return result

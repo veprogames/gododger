@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjulxxlb82h12"]
+
+[ext_resource type="PackedScene" uid="uid://cg0ob531pwsy" path="res://behavior/move/move_behavior.tscn" id="1_vo0we"]
+[ext_resource type="Script" path="res://behavior/move/noise_move_behavior.gd" id="2_u436p"]
+
+[node name="NoiseMoveBehavior" instance=ExtResource("1_vo0we")]
+script = ExtResource("2_u436p")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3j5xrdxletjv"]
+[gd_scene load_steps=12 format=3 uid="uid://d3j5xrdxletjv"]
 
 [ext_resource type="PackedScene" uid="uid://b2nlenin7f3m" path="res://level/level.tscn" id="1_gopiq"]
 [ext_resource type="Resource" uid="uid://cunpc84se8g22" path="res://level/levels/cysmixsonata.tres" id="2_xpn6h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://333yceifxftw" path="res://enemy/moon.png" id="3_otm0x"]
 [ext_resource type="PackedScene" uid="uid://6ofo34fitnot" path="res://behavior/move/periodic_move_behavior.tscn" id="3_wibwh"]
 [ext_resource type="PackedScene" uid="uid://bopfny4t8y4h4" path="res://behavior/shoot/periodic_shoot_behavior.tscn" id="4_arxxh"]
+[ext_resource type="PackedScene" uid="uid://bjulxxlb82h12" path="res://behavior/move/noise_move_behavior.tscn" id="6_5on8m"]
 
 [sub_resource type="Gradient" id="Gradient_hlobh"]
 offsets = PackedFloat32Array(0.0222222, 0.281481, 1)
@@ -37,7 +38,7 @@ texture = ExtResource("3_6xf7d")
 
 [node name="EnemySpawner" parent="." index="2"]
 enemy_sprite = ExtResource("3_otm0x")
-move_behaviors = Array[PackedScene]([ExtResource("3_wibwh")])
+move_behaviors = Array[PackedScene]([ExtResource("3_wibwh"), ExtResource("6_5on8m")])
 shoot_behaviors = Array[PackedScene]([ExtResource("4_arxxh")])
 
 [node name="MusicPlayer" parent="." index="7"]
