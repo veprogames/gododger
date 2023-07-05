@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_pc8qe")
-requirement = 2000
+requirement = 20000
 id = "koraii_purgatori"
 title = "sinister death"
 song = "KORAII - Purgatori"

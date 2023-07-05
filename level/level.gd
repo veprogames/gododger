@@ -45,8 +45,8 @@ func spawn_current_level() -> void:
 
 func get_score() -> int:
 	var time_per_level := elapsed / (level + 1)
-	var difficulty_modifier := difficulty_multiplier ** 1.5
-	return int(10 * level ** 1.15 / time_per_level * score_multiplier * difficulty_modifier)
+	var difficulty_modifier := difficulty_multiplier ** 2.0
+	return int(100 * level ** 1.15 / time_per_level * score_multiplier * difficulty_modifier)
 
 func _on_player_finished() -> void:
 	level += 1
@@ -60,7 +60,8 @@ func _on_enemy_spawner_node_spawned(node) -> void:
 
 func _on_player_died(death_instance: PlayerDeath) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	Global.save_highscore(get_id(), get_score())
+	#Global.save_highscore(get_id(), get_score())
+	Global.submit_stats(get_id(), get_score(), level)
 	game_restarted.emit(highscore)
 	add_child(death_instance)
 	var tween := create_tween()
