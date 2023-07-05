@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_adclt")
-requirement = 9999
+requirement = 14999
 id = "xtrullor_gold"
 title = "The Golden?"
 song = "Xtrullor & Zoflte - Gold"

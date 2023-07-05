@@ -17,7 +17,6 @@ func _ready() -> void:
 	label_title.text = data.title
 	label_song.text = data.song
 	label_requirement.text = "need: %d" % data.requirement
-	label_requirement.visible = !button_play.visible
 	image_level.texture = data.background
 	
 	var highscore_level := Global.get_highscore_level(data.id)

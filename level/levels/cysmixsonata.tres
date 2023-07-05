@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_5yepo")
-requirement = 6000
+requirement = 7500
 id = "cysmixsonata"
 title = "NIGHTFALL"
 song = "cYsmix - Moonlight Sonata"
