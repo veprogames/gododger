@@ -11,10 +11,11 @@ config_version=5
 [application]
 
 config/name="Gododger"
-config/description="everyone likes to dodge the sound"
+config/description="Dodge stuff and unlock levels"
 run/main_scene="res://mainmenu/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://app_icon.png"
+config/windows_native_icon="res://app_icon.ico"
 
 [autoload]
 
@@ -32,6 +33,10 @@ window/vsync/vsync_mode=0
 [editor]
 
 movie_writer/movie_file=".recording.avi"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 
