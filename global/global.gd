@@ -7,10 +7,6 @@ var highscores := {}
 func _ready() -> void:
 	load_game()
 
-func save_highscore(id: String, score: int) -> void:
-	highscores[id] = maxi(highscores[id] if id in highscores else 0, score)
-	save_game()
-
 func submit_stats(id: String, score: int, level: int) -> void:
 	if id in highscores:
 		highscores[id].score = maxi(highscores[id].score, score)

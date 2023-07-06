@@ -60,7 +60,6 @@ func _on_enemy_spawner_node_spawned(node) -> void:
 
 func _on_player_died(death_instance: PlayerDeath) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	#Global.save_highscore(get_id(), get_score())
 	Global.submit_stats(get_id(), get_score(), level)
 	game_restarted.emit(highscore)
 	add_child(death_instance)
@@ -88,6 +87,7 @@ func get_bpm() -> int:
 func _input(event: InputEvent) -> void:
 	var ev := event as InputEventKey
 	if ev and ev.pressed and ev.keycode == KEY_ESCAPE:
+		Global.submit_stats(get_id(), get_score(), level)
 		get_tree().change_scene_to_file("res://mainmenu/main_menu.tscn")
 
 
