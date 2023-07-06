@@ -14,3 +14,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_button_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_button_github_pressed() -> void:
+	OS.shell_open("https://github.com/veprogames/gododger")

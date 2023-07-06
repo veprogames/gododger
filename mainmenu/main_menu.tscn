@@ -42,24 +42,33 @@ offset_bottom = 172.0
 grow_horizontal = 2
 texture = ExtResource("2_b6ahp")
 
-[node name="LabelCredits" type="Label" parent="CanvasLayer"]
+[node name="VBoxContainerCredits" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -356.0
-offset_top = -108.0
+offset_top = -154.0
 offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="LabelCredits" type="Label" parent="CanvasLayer/VBoxContainerCredits"]
+layout_mode = 2
 text = "Main Menu Song
 ColBreakz - 10000
 Font
-Press Start 2P"
+Press Start 2P
+
+This game is FOSS"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="ButtonGithub" type="Button" parent="CanvasLayer/VBoxContainerCredits"]
+layout_mode = 2
+text = "View on Github"
 
 [node name="LabelVersion" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
@@ -149,4 +158,5 @@ metadata/_edit_lock_ = true
 stream = ExtResource("10_gy7ud")
 autoplay = true
 
+[connection signal="pressed" from="CanvasLayer/VBoxContainerCredits/ButtonGithub" to="." method="_on_button_github_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
